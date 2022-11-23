@@ -36,5 +36,6 @@ public class UserInfo {
 	}
 	public void setWallet_balance(int wallet_balance) {
 		this.wallet_balance = wallet_balance;
+		
 	}
 }
