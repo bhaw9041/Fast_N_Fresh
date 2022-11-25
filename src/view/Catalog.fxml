@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane minHeight="700.0" minWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+   <children>
+      <Button fx:id="btnFruits" layoutX="196.0" layoutY="220.0" mnemonicParsing="false" text="Fruits" />
+      <Button fx:id="btnVegetables" layoutX="399.0" layoutY="218.0" mnemonicParsing="false" text="Vegetables" />
+      <Button fx:id="btnSnacks" layoutX="615.0" layoutY="218.0" mnemonicParsing="false" text="Snacks" />
+      <Button fx:id="btnDairy" layoutX="409.0" layoutY="348.0" mnemonicParsing="false" text="Dairy" />
+      <Button fx:id="btnBeverages" layoutX="193.0" layoutY="348.0" mnemonicParsing="false" text="Beverages" />
+      <Button fx:id="btnMeat" layoutX="623.0" layoutY="350.0" mnemonicParsing="false" text="Meat" />
+      <Label fx:id="lblCatalig" layoutX="412.0" layoutY="100.0" text="Catalog" />
+   </children>
+</AnchorPane>
