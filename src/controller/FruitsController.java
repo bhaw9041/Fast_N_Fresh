@@ -32,11 +32,11 @@ public class FruitsController {
     @FXML
     private void addToCart(javafx.event.ActionEvent event) {
     	
-    	ScreenController.goToCatalogPage(event);
+    	//ScreenController.goToCatalogPage(event);
     }
     
     @FXML
-    private void backToCart(javafx.event.ActionEvent event) {
+    private void backToCatalog(javafx.event.ActionEvent event) {
     	
     	ScreenController.goToCatalogPage(event);
     }
@@ -44,7 +44,7 @@ public class FruitsController {
     @FXML
     private void goToCart(javafx.event.ActionEvent event) {
     	
-    	ScreenController.goToCatalogPage(event);
+    	ScreenController.goToCartPage(event);
     }
 
 }

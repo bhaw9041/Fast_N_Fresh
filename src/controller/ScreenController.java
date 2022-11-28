@@ -28,7 +28,7 @@ public class ScreenController {
     }
 	
 	static void goToCartPage(ActionEvent event) {
-        showStage(event, "../view/Cart.fxml", "Cart Page");
+        showStage(event, "../view/OrderCart.fxml", "Cart");
     }
 	
 	static void goToCatalogPage(ActionEvent event) {
