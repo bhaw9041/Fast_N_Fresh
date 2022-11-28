@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
@@ -11,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FruitsController">
    <children>
-      <GridPane layoutX="-1.0" layoutY="51.0" prefHeight="599.0" prefWidth="591.0">
+      <GridPane alignment="TOP_CENTER" layoutX="-1.0" layoutY="51.0" prefHeight="599.0" prefWidth="591.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="60.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,9 +34,15 @@
                      </image>
                   </ImageView>
                   <Label text="Apple" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="applePrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -46,22 +53,34 @@
                      </image>
                   </ImageView>
                   <Label text="Avocado" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="avocadoPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="86.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <ImageView fitHeight="93.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="93.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/banana.jpeg" />
                      </image>
                   </ImageView>
                   <Label text="Banana" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="bananaPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -72,9 +91,15 @@
                      </image>
                   </ImageView>
                   <Label text="Blueberries" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="blueberriesPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -85,9 +110,15 @@
                      </image>
                   </ImageView>
                   <Label text="Guava" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="guavaPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -98,9 +129,15 @@
                      </image>
                   </ImageView>
                   <Label text="Oranges" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="orangePrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
@@ -111,9 +148,15 @@
                      </image>
                   </ImageView>
                   <Label text="Plum" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="plumPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -124,9 +167,15 @@
                      </image>
                   </ImageView>
                   <Label text="Strawberries" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="strawberriesPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -137,12 +186,20 @@
                      </image>
                   </ImageView>
                   <Label text="Watermelon" />
-                  <Label text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0" />
-                  <Button mnemonicParsing="false" text="Add to Cart" />
+                  <Label fx:id="watermelonPrice" text="Price" />
+                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin></Spinner>
+                  <Button mnemonicParsing="false" onAction="#addToCart" text="Add to Cart">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
          </children>
       </GridPane>
+      <Button layoutX="817.0" layoutY="2.0" mnemonicParsing="false" onAction="#goToCart" text="Go To Cart" />
+      <Button layoutX="742.0" layoutY="2.0" mnemonicParsing="false" onAction="#backToCatalog" prefHeight="26.0" prefWidth="67.0" text="Back" />
    </children>
 </AnchorPane>
