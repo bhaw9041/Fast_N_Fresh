@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class ScreenController {
 	
-	private static void showStage(ActionEvent event, String filename, String sceneName) {
+	public static void showStage(ActionEvent event, String filename, String sceneName) {
         try {
             Parent parent = FXMLLoader.load(ScreenController.class.getResource(filename));
             Scene scene = new Scene(parent, 900, 700);
@@ -23,7 +23,8 @@ public class ScreenController {
         }
 	}
 	
-	static void goToFruitsPage(ActionEvent event) {
+	public static void goToFruitsPage(ActionEvent event) {
+		System.out.println("palak please");
         showStage(event, "../view/Fruits.fxml", "Fruits");
     }
 	
@@ -34,5 +35,7 @@ public class ScreenController {
 	static void goToCatalogPage(ActionEvent event) {
         showStage(event, "../view/Catalog.fxml", "Catalog");
     }
+
+
 
 }
