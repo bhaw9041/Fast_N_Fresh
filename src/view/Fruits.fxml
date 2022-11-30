@@ -36,11 +36,11 @@
                   </ImageView>
                   <Label text="Apple" />
                   <Label fx:id="applePrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="appleSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="appleButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -58,11 +58,11 @@
                   </ImageView>
                   <Label text="Avocado" />
                   <Label fx:id="avocadoPrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="avocadoSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="avocadoButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -80,11 +80,11 @@
                   </ImageView>
                   <Label text="Banana" />
                   <Label fx:id="bananaPrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="bananaSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="bananaButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -102,11 +102,11 @@
                   </ImageView>
                   <Label text="Blueberries" />
                   <Label fx:id="blueberriesPrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="blueberriesSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="blueberriesButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -124,11 +124,11 @@
                   </ImageView>
                   <Label text="Guava" />
                   <Label fx:id="guavaPrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="guavaSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="guavaButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -146,11 +146,11 @@
                   </ImageView>
                   <Label text="Oranges" />
                   <Label fx:id="orangePrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="orangeSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="orangeButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -168,11 +168,11 @@
                   </ImageView>
                   <Label text="Plum" />
                   <Label fx:id="plumPrice" text="Price" />
-                  <Spinner prefHeight="26.0" prefWidth="76.0">
+                  <Spinner fx:id="plumSpinner" prefHeight="26.0" prefWidth="76.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="plumButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -190,11 +190,11 @@
                   </ImageView>
                   <Label text="Strawberries" />
                   <Label fx:id="strawberriesPrice" text="Price" />
-                  <Spinner prefHeight="23.0" prefWidth="74.0">
+                  <Spinner fx:id="strawberriesSpinner" prefHeight="23.0" prefWidth="74.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="strawberriesButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
@@ -212,11 +212,11 @@
                   </ImageView>
                   <Label text="Watermelon" />
                   <Label fx:id="watermelonPrice" text="Price" />
-                  <Spinner prefHeight="13.0" prefWidth="88.0">
+                  <Spinner fx:id="watermelonSpinner" prefHeight="13.0" prefWidth="88.0">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin></Spinner>
-                  <Button mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
+                  <Button fx:id="watermelonButton" mnemonicParsing="false" onAction="#addToCart" prefHeight="22.0" prefWidth="68.0" text="Add to Cart">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>

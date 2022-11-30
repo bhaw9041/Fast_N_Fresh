@@ -36,6 +36,4 @@ public class ScreenController {
         showStage(event, "../view/Catalog.fxml", "Catalog");
     }
 
-
-
 }
