@@ -1,11 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Product {
 	
 	private int productId;
 	private String productName;
 	private int quantity;
 	private double price;
+	public static ArrayList<Product> productList = new ArrayList<>();
 	
 	
 	public Product(int productId, String name, int quantity, double price) {
