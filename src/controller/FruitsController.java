@@ -2,8 +2,9 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import model.Product;
 
-public class FruitsController {
+public class FruitsController extends ProductBaseContoller {
 
     @FXML Label applePrice;
     @FXML Label avocadoPrice;
@@ -31,8 +32,10 @@ public class FruitsController {
     
     @FXML
     private void addToCart(javafx.event.ActionEvent event) {
-    	
-    	//ScreenController.goToCatalogPage(event);
+    	cart.addProduct(new Product(1, "Oranges", 2, 7.84));
+    	cart.addProduct(new Product(2, "Apples", 4, 1.2));
+		cart.addProduct(new Product(3, "Tomatoes", 6, 0.5));
+		cart.addProduct(new Product(4, "Potatoes", 3, 2.18));
     }
     
     @FXML

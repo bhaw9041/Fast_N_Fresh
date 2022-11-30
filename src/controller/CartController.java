@@ -13,7 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Product;
 
-public class CartController implements Initializable{
+public class CartController extends ProductBaseContoller implements Initializable{
 	
 	double totalCartValue = 0.0;
 	
@@ -44,10 +44,7 @@ public class CartController implements Initializable{
     	ScreenController.goToPaymentPage(event);
     }
     
-    ObservableList<Product> list = FXCollections.observableArrayList(
-    		new Product(1, "Oranges", 2, 7.84), new Product(2, "Apples", 4, 1.2),
-    		new Product(3, "Tomatoes", 6, 0.5), new Product(4, "Potatoes", 3, 2.18)
-    		);
+    ObservableList<Product> list = FXCollections.observableArrayList(cart.getOrderList());
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
