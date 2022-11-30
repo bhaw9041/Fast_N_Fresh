@@ -24,7 +24,7 @@ public class ScreenController {
 	}
 	
 	public static void goToFruitsPage(ActionEvent event) {
-		System.out.println("palak please");
+		//System.out.println("palak please");
         showStage(event, "../view/Fruits.fxml", "Fruits");
     }
 	
@@ -36,6 +36,7 @@ public class ScreenController {
         showStage(event, "../view/Catalog.fxml", "Catalog");
     }
 
-
-
+	static void goToPaymentPage(ActionEvent event) {
+        showStage(event, "../view/PaymentScene.fxml", "Payment");
+    }
 }

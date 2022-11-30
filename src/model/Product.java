@@ -1,18 +1,24 @@
 package model;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Product {
 	
 	private int productId;
 	private String productName;
 	private int quantity;
 	private double price;
+	private String itemTotalValue;
 	
-	
+	DecimalFormat df = new DecimalFormat("0.00");
+    
 	public Product(int productId, String name, int quantity, double price) {
         this.productId = productId;
         this.productName = name;
         this.quantity = quantity;
         this.price = price;
+        this.setItemTotalValue();
     }
 	
 
@@ -24,6 +30,7 @@ public class Product {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+		setItemTotalValue();
 	}
 	public double getPrice() {
 		return price;
@@ -52,5 +59,15 @@ public class Product {
     public String toString() {
         return "Product{" + "productId=" + productId + "productName=" + productName + "quantity=" + quantity + "price=" + price +'}';
     }
+
+
+	public String getItemTotalValue() {
+		return itemTotalValue;
+	}
+
+
+	public void setItemTotalValue() {
+		this.itemTotalValue = df.format((double) this.quantity * this.price);
+	}
 	
 }
