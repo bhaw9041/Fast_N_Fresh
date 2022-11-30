@@ -17,7 +17,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnVegetables" contentDisplay="TOP" layoutX="331.0" layoutY="131.0" mnemonicParsing="false" text="Vegetables">
+      <Button fx:id="btnVegetables" contentDisplay="TOP" layoutX="331.0" layoutY="131.0" mnemonicParsing="false" onAction="#goToVegetables" text="Vegetables">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>

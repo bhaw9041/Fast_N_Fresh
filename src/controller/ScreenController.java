@@ -24,8 +24,11 @@ public class ScreenController {
 	}
 	
 	public static void goToFruitsPage(ActionEvent event) {
-		//System.out.println("palak please");
         showStage(event, "../view/Fruits.fxml", "Fruits");
+    }
+	
+	public static void goToVegetablesPage(ActionEvent event) {
+        showStage(event, "../view/Vegetables.fxml", "Vegetables");
     }
 	
 	static void goToCartPage(ActionEvent event) {

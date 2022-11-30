@@ -12,10 +12,14 @@ public class CatalogController {
     @FXML
     public void goToFruits(ActionEvent event) {
     	
-    	  	ScreenController.goToFruitsPage(event);
+    	ScreenController.goToFruitsPage(event);
     }
     
-
-
+    @FXML
+    public void goToVegetables(ActionEvent event) {
+    	
+    	ScreenController.goToVegetablesPage(event);
+    }
+    
 }
 
