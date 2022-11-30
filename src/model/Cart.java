@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Cart {
 	private List<Product> orderList = new ArrayList<>();
+	public static List<CartItem> cartItemList = new ArrayList<>();
 
 	public Cart(){
 	}

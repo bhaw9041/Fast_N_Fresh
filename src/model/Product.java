@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
@@ -9,6 +10,8 @@ public class Product {
 	private String productName;
 	private int quantity;
 	private double price;
+
+	public static ArrayList<Product> productList = new ArrayList<>();
 	private String itemTotalValue;
 	
 	DecimalFormat df = new DecimalFormat("0.00");
