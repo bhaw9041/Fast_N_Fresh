@@ -7,6 +7,6 @@ public class DairyController extends ProductBaseContoller {
 
 	@FXML
 	public void addDiaryProduct(Product p) {
-		cart.addProduct(p);
+		//cart.addProduct(p);
 	}
 }

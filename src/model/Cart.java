@@ -1,20 +1,17 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Cart {
 	private List<Product> orderList = new ArrayList<>();
 	public static List<CartItem> cartItemList = new ArrayList<>();
+	
+	private HashMap<String, CartItem> cartItems = new HashMap<String, CartItem>();
 
 	public Cart(){
 	}
-	
-//	public Product addProduct() {
-//		Product p = new Product();
-//		orderList.add(p);
-//		return p;
-//	}
 	
 	public List<Product> getOrderList() {
 		return orderList;
@@ -24,8 +21,22 @@ public class Cart {
 		this.orderList = orderList;
 	}
 	
-	public void addProduct(Product entity) {
-		orderList.add(entity);
+	public void addProduct(CartItem entity) {
+
+		if(cartItems.containsKey(entity.getProductId())){
+			int quantity = entity.getQuantity();
+
+			cartItems.get(entity.getProductId()).setQuantity(quantity);
+			
+			System.out.println(cartItems.get(entity.getProductId()).getQuantity());
+			cartItems.put(entity.getProductId(), cartItems.get(entity));
+			
+		}
+		else {
+			cartItems.put(entity.getProductId(), entity);
+		}
+		
+		
 	}
 	
 	public void removeProduct(Product entity) {
