@@ -9,7 +9,7 @@ import model.Cart;
 import model.CartItem;
 import model.Product;
 
-public class FruitsController {
+public class FruitsController extends ProductBaseContoller {
 
     @FXML Label applePrice;
     @FXML Label avocadoPrice;
@@ -151,6 +151,7 @@ public class FruitsController {
     	}
     	
     	System.out.println(Cart.cartItemList.size());
+    	
     }
     
     @FXML
