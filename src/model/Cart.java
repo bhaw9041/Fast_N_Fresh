@@ -5,20 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Cart {
-	private List<Product> orderList = new ArrayList<>();
-	public static List<CartItem> cartItemList = new ArrayList<>();
 	
 	private HashMap<String, CartItem> cartItems = new HashMap<String, CartItem>();
 
 	public Cart(){
 	}
 	
-	public List<Product> getOrderList() {
-		return orderList;
-	}
-
-	public void setOrderList(ArrayList<Product> orderList) {
-		this.orderList = orderList;
+	public List<CartItem> getCartItems() {
+		List<CartItem> itemsList = new ArrayList();
+		for(String id: cartItems.keySet()) {
+			itemsList.add(cartItems.get(id));
+		}
+		return itemsList;
 	}
 	
 	public void addProduct(CartItem entity) {
@@ -39,12 +37,4 @@ public class Cart {
 		
 	}
 	
-	public void removeProduct(Product entity) {
-		int entityIndex = orderList.indexOf(entity);
-		orderList.remove(entityIndex);
-	}
-	
-	public String toString() {
-        return "Cart{" + "orderList=" + orderList + '}';
-    }
 }
