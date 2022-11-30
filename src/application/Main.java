@@ -18,12 +18,25 @@ public class Main extends Application {
 		
 		createProduct();
 		
-		Parent rootCat = FXMLLoader.load(getClass().getResource("/view/Catalog.fxml"));
-		Scene sceneCat = new Scene(rootCat);
-	
-		primaryStage.setTitle("Catalog Page");
-		primaryStage.setScene(sceneCat);
+		Parent rootLogin = FXMLLoader.load(getClass().getResource("/view/LOGIN.fxml"));
+		Scene sceneLogin = new Scene(rootLogin);
+		primaryStage.setTitle("Login Page");
+		primaryStage.setScene(sceneLogin);
 		primaryStage.show();
+		
+//		Parent rootRegistration = FXMLLoader.load(getClass().getResource("/view/Registration.fxml"));
+//		Scene sceneRegistration = new Scene(rootRegistration);
+//		primaryStage.setTitle("Registration Page");
+//		primaryStage.setScene(sceneRegistration);
+//		primaryStage.show();
+//		
+//		
+//		Parent rootCat = FXMLLoader.load(getClass().getResource("/view/Catalog.fxml"));
+//		Scene sceneCat = new Scene(rootCat);
+//	
+//		primaryStage.setTitle("Catalog Page");
+//		primaryStage.setScene(sceneCat);
+//		primaryStage.show();
 	}
 	
 	public static void main(String[] args) {

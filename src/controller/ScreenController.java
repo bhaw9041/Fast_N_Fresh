@@ -39,4 +39,9 @@ public class ScreenController {
 	static void goToPaymentPage(ActionEvent event) {
         showStage(event, "../view/PaymentScene.fxml", "Payment");
     }
+	
+	
+	static void goToRegistrationPage(ActionEvent event) {
+        showStage(event, "../view/Registration.fxml", "Registration");
+    }
 }
