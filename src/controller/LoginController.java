@@ -34,12 +34,6 @@ public class LoginController {
 	private Button btnSignIn;
 
 	@FXML
-	private TextField tfPassword;
-
-	@FXML
-	private TextField tfUsername;
-
-	@FXML
 	public void goToCatalog(ActionEvent event) {
 		try {
 			Connection conn = DatabaseConnector.getInstance();
