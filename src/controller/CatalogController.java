@@ -33,4 +33,10 @@ public class CatalogController {
     	ScreenController.goToDairyPage(event);
     }
     
+    @FXML
+    public void goToCatalogExpenses(ActionEvent event) {
+    	
+    	ScreenController.goToCatalogExpensesPage(event);
+    }
+    
 }
