@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-public class CatalogController {
+public class CatalogController extends ProductBaseController {
  
     
     @FXML
@@ -31,6 +31,13 @@ public class CatalogController {
     public void goToDairy(ActionEvent event) {
     	
     	ScreenController.goToDairyPage(event);
+    }
+    
+    
+    @FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
     }
     
 }

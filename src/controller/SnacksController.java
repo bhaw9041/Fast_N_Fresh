@@ -20,7 +20,7 @@ import java.util.Map.Entry;
 
 import model.DatabaseConnector;
 
-public class SnacksController extends ProductBaseContoller {
+public class SnacksController extends ProductBaseController {
 
 	@FXML
 	Label blueberryBarPrice;
@@ -224,5 +224,11 @@ public class SnacksController extends ProductBaseContoller {
 
 		ScreenController.goToCartPage(event);
 	}
+	
+	@FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
+    }
 
 }

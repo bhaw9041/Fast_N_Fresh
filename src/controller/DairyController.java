@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,7 +9,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import model.CartItem;
 import model.Product;
 
-public class DairyController extends ProductBaseContoller {
+public class DairyController extends ProductBaseController {
 
 	@FXML Label milkPrice;
 	@FXML Label butterPrice;
@@ -183,6 +184,12 @@ public class DairyController extends ProductBaseContoller {
 
 		ScreenController.goToCartPage(event);
 	}
+	
+	@FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
+    }
 	
 	
 //	@FXML
