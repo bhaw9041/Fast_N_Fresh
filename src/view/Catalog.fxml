@@ -33,7 +33,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnDairy" contentDisplay="TOP" layoutX="331.0" layoutY="348.0" mnemonicParsing="false" text="Dairy">
+      <Button fx:id="btnDairy" contentDisplay="TOP" layoutX="331.0" layoutY="348.0" mnemonicParsing="false" onAction="#goToDairy" text="Dairy">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>

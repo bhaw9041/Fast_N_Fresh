@@ -43,12 +43,19 @@ public class ScreenController {
         showStage(event, "../view/PaymentScene.fxml", "Payment");
     }
 	
-	
 	static void goToRegistrationPage(ActionEvent event) {
         showStage(event, "../view/Registration.fxml", "Registration");
     }
 	
-	public static void goToSnacksPage(ActionEvent event) {
+	static void goToLoginPage(ActionEvent event) {
+        showStage(event, "../view/Login.fxml", "Login");
+	}
+        
+	public static void goToDairyPage(ActionEvent event) {
+        showStage(event, "../view/Dairy.fxml", "Dairy");
+    }
+
+    public static void goToSnacksPage(ActionEvent event) {
         showStage(event, "../view/Snacks.fxml", "Snacks");
     }
 }
