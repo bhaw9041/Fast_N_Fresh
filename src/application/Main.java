@@ -45,15 +45,15 @@ public class Main extends Application {
 	
 	public static void createProduct() {
 		
-		Product.productList.add(new Product("FRU01", "Apple", 10, .99));
-		Product.productList.add(new Product("FRU02", "Avocado", 10, 1));
-		Product.productList.add(new Product("FRU03", "Banana", 10, .50));
-		Product.productList.add(new Product("FRU04", "Blueberries", 10, 1.49));
-		Product.productList.add(new Product("FRU05", "Guava", 10, .99));
-		Product.productList.add(new Product("FRU06", "Orange", 10, 1));
-		Product.productList.add(new Product("FRU07", "Plum", 10, 1.75));
-		Product.productList.add(new Product("FRU08", "Strawberries", 10, 2.50));
-		Product.productList.add(new Product("FRU09", "Watermelon", 10, 3));
+		Product.productList.add(new Product("FRU01", "Apple", 10, .99, "Fruits"));
+		Product.productList.add(new Product("FRU02", "Avocado", 10, 1, "Fruits"));
+		Product.productList.add(new Product("FRU03", "Banana", 10, .50, "Fruits"));
+		Product.productList.add(new Product("FRU04", "Blueberries", 10, 1.49, "Fruits"));
+		Product.productList.add(new Product("FRU05", "Guava", 10, .99, "Fruits"));
+		Product.productList.add(new Product("FRU06", "Orange", 10, 1, "Fruits"));
+		Product.productList.add(new Product("FRU07", "Plum", 10, 1.75, "Fruits"));
+		Product.productList.add(new Product("FRU08", "Strawberries", 10, 2.50, "Fruits"));
+		Product.productList.add(new Product("FRU09", "Watermelon", 10, 3, "Fruits"));
 		
 		
 		

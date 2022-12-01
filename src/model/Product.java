@@ -8,14 +8,16 @@ public class Product {
 	private double price;
 	private String productName;
 	private String productId;
+	private String catalog;
 
 	public static ArrayList<Product> productList = new ArrayList<>();
 	
-	public Product(String productId, String productName, int quantity, double price){
+	public Product(String productId, String productName, int quantity, double price, String catalogId){
 		this.productId = productId;
 		this.productName = productName;
 		this.quantity = quantity;
 		this.price = price;
+		this.catalog = catalogId;
 	}
 
 	public String getProductId() {
@@ -53,6 +55,14 @@ public class Product {
 	public String toString() {
 		return "Product{" + "productId=" + productId + "productName=" + productName + "quantity=" + quantity + "price=" + price +'}';
 		
+	}
+
+	public String getCatalog() {
+		return catalog;
+	}
+
+	public void setCatalog(String catalog) {
+		this.catalog = catalog;
 	}
 	
 }
