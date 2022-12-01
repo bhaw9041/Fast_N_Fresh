@@ -27,7 +27,7 @@ import model.CartItem;
 import model.DatabaseConnector;
 import model.Product;
 
-public class PaymentSceneController extends ProductBaseContoller {
+public class PaymentSceneController extends ProductBaseController {
 
 	@FXML
 	private Button confirmorder;
@@ -37,6 +37,12 @@ public class PaymentSceneController extends ProductBaseContoller {
 
 	@FXML
 	private TextField cardnumber;
+	
+	@FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
+    }
 
 	@FXML
 	public void handlebtnconfirmorder(ActionEvent event) {

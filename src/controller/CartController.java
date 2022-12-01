@@ -18,7 +18,7 @@ import model.CartItem;
 import model.DatabaseConnector;
 import model.Product;
 
-public class CartController extends ProductBaseContoller implements Initializable {
+public class CartController extends ProductBaseController implements Initializable {
 
 	double totalCartValue = 0.0;
 
@@ -47,40 +47,12 @@ public class CartController extends ProductBaseContoller implements Initializabl
 	void goToPayment(ActionEvent event) {
 		ScreenController.goToPaymentPage(event);
 	}
-
-//	@FXML
-//	void pushtoDB(ActionEvent event) {
-//		try {
-//			List<CartItem> cartList = cart.getCartItems();
-//			Connection conn = DatabaseConnector.getInstance();
-//			for (CartItem item : cartList) {
-//				String key = item.getProductId();
-//				Product productInventory = inventoryItems.get(key);
-//				int netQuantity = productInventory.getQuantity() - item.getQuantity();
-//				updateInventory(conn, item.getProductId(), netQuantity);
-//			}
-//			conn.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-//	private void updateInventory(Connection conn, String key, int quantity) {
-//		String query = "update product_list set productQuantity = ? where productId = ?";
-//		PreparedStatement preparedStmt;
-//		try {
-//			
-//			preparedStmt = conn.prepareStatement(query);
-//			preparedStmt.setInt(1, quantity);
-//			preparedStmt.setString(2, key);
-//			preparedStmt.executeUpdate();
-//			preparedStmt.close();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//	}
+	
+	@FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
+    }
 
 	ObservableList<CartItem> list = FXCollections.observableArrayList(cart.getCartItems());
 

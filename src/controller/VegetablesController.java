@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import model.DatabaseConnector;
 
-public class VegetablesController extends ProductBaseContoller {
+public class VegetablesController extends ProductBaseController {
 
     @FXML Label bellPepperPrice;
     @FXML Label carrotPrice;
@@ -193,6 +194,12 @@ public class VegetablesController extends ProductBaseContoller {
     private void goToCart(javafx.event.ActionEvent event) {
     	
     	ScreenController.goToCartPage(event);
+    }
+    
+    @FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
     }
 
 }

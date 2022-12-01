@@ -235,5 +235,6 @@
          <font>
             <Font size="11.0" />
          </font></Button>
+      <Button layoutX="51.0" layoutY="12.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="26.0" prefWidth="76.0" text="Logout" />
    </children>
 </AnchorPane>
