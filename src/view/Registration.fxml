@@ -11,9 +11,13 @@
       <Label fx:id="lblContact" layoutX="270.0" layoutY="205.0" text="Contact number:" />
       <Label fx:id="lblEmail" layoutX="323.0" layoutY="260.0" prefHeight="0.0" prefWidth="60.0" text="e-mail:" />
       <Label fx:id="lblRegister" layoutX="407.0" layoutY="84.0" text="User Registration" />
-      <Button fx:id="btnSubmit" layoutX="454.0" layoutY="402.0" mnemonicParsing="false" onAction="#goToCatalog" text="Submit" />
+      <Button fx:id="btnSubmit" layoutX="450.0" layoutY="443.0" mnemonicParsing="false" onAction="#goToCatalog" text="Submit" />
       <TextField fx:id="tfName" layoutX="431.0" layoutY="144.0" />
       <TextField fx:id="tfContact" layoutX="431.0" layoutY="201.0" />
       <TextField fx:id="tfEmail" layoutX="431.0" layoutY="256.0" />
+      <Label fx:id="lblUsername" layoutX="302.0" layoutY="314.0" prefHeight="0.0" prefWidth="60.0" text="Username:" />
+      <Label fx:id="lblPassword" layoutX="302.0" layoutY="364.0" prefHeight="0.0" prefWidth="60.0" text="Password:" />
+      <TextField fx:id="tfPassword" layoutX="427.0" layoutY="360.0" />
+      <TextField fx:id="tfUsername" layoutX="431.0" layoutY="310.0" />
    </children>
 </AnchorPane>

@@ -6,14 +6,18 @@ import javafx.scene.control.TextField;
 
 public class RegistrationController {
 	
-	@FXML
-    private TextField tfName;
+	@FXML private TextField tfName;
 	
-	@FXML
-    private TextField tfContact;
+	@FXML private TextField tfContact;
 	
-	@FXML
-    private TextField tfEmail;
+	@FXML private TextField tfEmail;
+	
+	@FXML private TextField tfUsername;
+	
+	@FXML private TextField tfPass;
+	
+	
+	
 
 	public void acceptName() {
 		String name = tfName.getText();
@@ -24,6 +28,13 @@ public class RegistrationController {
 	}
 	
 	public void acceptEmail() {
+		String email = tfEmail.getText();
+	}
+	
+	public void acceptUsername() {
+		String email = tfEmail.getText();
+	}
+	public void acceptPassword() {
 		String email = tfEmail.getText();
 	}
 	
