@@ -17,12 +17,12 @@ public class CatalogExpensesController extends ProductBaseController {
 	
 	public void initialize() {
 		
-		int fruitShare;
-		int vegShare;
-		int snackShare;
-		int beverageShare;
-		int dairyShare;
-		int meatShare;
+		double fruitShare = 0;
+		double vegShare = 0;
+		double snackShare = 0;
+		double beverageShare = 0;
+		double dairyShare = 0;
+		double meatShare = 0;
 		
 		try {
 			Connection conn = DatabaseConnector.getInstance();
@@ -30,23 +30,41 @@ public class CatalogExpensesController extends ProductBaseController {
 			String query = "select purchasedPrice, catalog from user_order_history where user_name = '" + userId +"'";
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-			//	switch(rs.getString(2)):
-			//		case "Fruits" :
-						// use rs.getString(1); to get the price
+				switch(rs.getString(2)) {
+					case "Fruits" :
+						 fruitShare += Double.valueOf(rs.getString(1));
+						 break;
+					case "Vegetables" :
+						vegShare += Double.valueOf(rs.getString(1)); 
+						break;
+					case "Snacks" :
+						snackShare += Double.valueOf(rs.getString(1)); 
+						break;
+					case "Beverages" :
+						beverageShare += Double.valueOf(rs.getString(1)); 
+						break;
+					case "Dairy" :
+						dairyShare += Double.valueOf(rs.getString(1));
+						break;
+					case "Meat" :
+						meatShare += Double.valueOf(rs.getString(1));
+						break;
+				}
 			}
 			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		double totalShare = fruitShare + vegShare + snackShare + beverageShare + dairyShare + meatShare;
 		
 		ObservableList<PieChart.Data> pieChartData =
 	            FXCollections.observableArrayList(
-	            new PieChart.Data("Fruits", 40),
-	            new PieChart.Data("Vegetables", 30),
-	            new PieChart.Data("Snacks", 15),
-	            new PieChart.Data("Beverages", 10),
-	            new PieChart.Data("Dairy", 5),
-				new PieChart.Data("Meat", 0));
+	            new PieChart.Data("Fruits", (fruitShare/totalShare) * 100),
+	            new PieChart.Data("Vegetables", (vegShare/totalShare) * 100),
+	            new PieChart.Data("Snacks", (snackShare/totalShare) * 100),
+	            new PieChart.Data("Beverages", (beverageShare/totalShare) * 100),
+	            new PieChart.Data("Dairy", (dairyShare/totalShare) * 100),
+				new PieChart.Data("Meat", (meatShare/totalShare) * 100));
 
 		catalogData.setData(pieChartData);
 	}
