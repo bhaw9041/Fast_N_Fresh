@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.paint.Color;
 import model.CartItem;
 import model.Product;
 import java.sql.Connection;
@@ -33,7 +34,7 @@ public class FruitsController extends ProductBaseContoller {
 	Label strawberriesPrice;
 	@FXML
 	Label watermelonPrice;
-
+	
 	@FXML
 	Spinner<Integer> appleSpinner;
 	@FXML
@@ -125,7 +126,37 @@ public class FruitsController extends ProductBaseContoller {
 
 		watermelonSpinner.setValueFactory(
 				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("FRU009").getQuantity(), 0));
-
+		
+		
+		if(inventoryItems.get("FRU001").getQuantity() == 0) {
+			setOutOfStockField(applePrice, appleSpinner, appleButton);
+		}
+		if(inventoryItems.get("FRU002").getQuantity() == 0) {
+			setOutOfStockField(avocadoPrice, avocadoSpinner, avocadoButton);
+		}
+		if(inventoryItems.get("FRU003").getQuantity() == 0) {
+			setOutOfStockField(bananaPrice, bananaSpinner, bananaButton);
+		}
+		if(inventoryItems.get("FRU004").getQuantity() == 0) {
+			setOutOfStockField(blueberriesPrice, blueberriesSpinner, blueberriesButton);
+		}
+		if(inventoryItems.get("FRU005").getQuantity() == 0) {
+			setOutOfStockField(guavaPrice, guavaSpinner, guavaButton);
+		}
+		if(inventoryItems.get("FRU006").getQuantity() == 0) {
+			setOutOfStockField(orangePrice,orangeSpinner, orangeButton);
+		}
+		if(inventoryItems.get("FRU007").getQuantity() == 0) {
+			setOutOfStockField(plumPrice, plumSpinner, plumButton);
+		}
+		if(inventoryItems.get("FRU008").getQuantity() == 0) {
+			setOutOfStockField(strawberriesPrice, strawberriesSpinner, strawberriesButton);
+		}
+		if(inventoryItems.get("FRU009").getQuantity() == 0) {
+			setOutOfStockField(watermelonPrice, watermelonSpinner, watermelonButton);
+		}
+		
+		
 	}
 
 	@FXML
@@ -214,6 +245,13 @@ public class FruitsController extends ProductBaseContoller {
 	private void goToCart(javafx.event.ActionEvent event) {
 
 		ScreenController.goToCartPage(event);
+	}
+	
+	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
+		errorLabel.setText("Out of Stock");
+		errorLabel.setTextFill(Color.RED);
+		spinner.setDisable(true);
+		bt.setDisable(true);
 	}
 
 }
