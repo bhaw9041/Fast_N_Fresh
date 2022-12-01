@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Cart {
 	
@@ -17,6 +18,10 @@ public class Cart {
 			itemsList.add(cartItems.get(id));
 		}
 		return itemsList;
+	}
+	
+	public Set<String> getProductKeys() {
+		return cartItems.keySet();
 	}
 	
 	public void addProduct(CartItem entity) {

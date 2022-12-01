@@ -78,8 +78,6 @@ public class FruitsController extends ProductBaseContoller {
 	@FXML
 	Button watermelonButton;
 
-	private Map<String, Product> fruitItems = new HashMap();
-
 	public void initialize() {
 
 		applePrice.setText("$" + Product.productList.get(0).getPrice());
@@ -99,10 +97,10 @@ public class FruitsController extends ProductBaseContoller {
 //			String query = "select productId, productName, productPrice, productQuantity from product_list where catalog = 'Fruits'";
 //			ResultSet rs = st.executeQuery(query);
 //			while (rs.next()) {
-//				fruitItems.put(rs.getString(1), new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3)));
+//				inventoryItems.put(rs.getString(1),
+//						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3)));
 //			}
 //			st.close();
-//			conn.close();
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
@@ -140,7 +138,7 @@ public class FruitsController extends ProductBaseContoller {
 	private void addToCart(javafx.event.ActionEvent event) {
 
 		if (((Button) event.getTarget()).getId().toString().equals("appleButton")) {
-			CartItem ci = new CartItem("FRU01", "Apple", (Integer) appleSpinner.getValue(),
+			CartItem ci = new CartItem("FRU001", "Apple", (Integer) appleSpinner.getValue(),
 					Product.productList.get(0).getPrice());
 
 			cart.addProduct(ci);
@@ -148,7 +146,7 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("avocadoButton")) {
-			CartItem ci = new CartItem("FRU01", "Avocado", (Integer) avocadoSpinner.getValue(),
+			CartItem ci = new CartItem("FRU002", "Avocado", (Integer) avocadoSpinner.getValue(),
 					Product.productList.get(1).getPrice());
 
 			cart.addProduct(ci);
@@ -156,7 +154,7 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("bananaButton")) {
-			CartItem ci = new CartItem("FRU01", "Banana", (Integer) bananaSpinner.getValue(),
+			CartItem ci = new CartItem("FRU003", "Banana", (Integer) bananaSpinner.getValue(),
 					Product.productList.get(2).getPrice());
 
 			cart.addProduct(ci);
@@ -164,7 +162,7 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("blueberriesButton")) {
-			CartItem ci = new CartItem("FRU01", "Blueberries", (Integer) blueberriesSpinner.getValue(),
+			CartItem ci = new CartItem("FRU004", "Blueberries", (Integer) blueberriesSpinner.getValue(),
 					Product.productList.get(3).getPrice());
 
 			cart.addProduct(ci);
@@ -172,14 +170,14 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("guavaButton")) {
-			CartItem ci = new CartItem("FRU01", "Guava", (Integer) guavaSpinner.getValue(),
+			CartItem ci = new CartItem("FRU005", "Guava", (Integer) guavaSpinner.getValue(),
 					Product.productList.get(4).getPrice());
 
 			cart.addProduct(ci);
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("orangeButton")) {
-			CartItem ci = new CartItem("FRU01", "Orange", (Integer) orangeSpinner.getValue(),
+			CartItem ci = new CartItem("FRU006", "Orange", (Integer) orangeSpinner.getValue(),
 					Product.productList.get(5).getPrice());
 
 			cart.addProduct(ci);
@@ -187,7 +185,7 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("plumButton")) {
-			CartItem ci = new CartItem("FRU01", "Plum", (Integer) plumSpinner.getValue(),
+			CartItem ci = new CartItem("FRU007", "Plum", (Integer) plumSpinner.getValue(),
 					Product.productList.get(6).getPrice());
 
 			cart.addProduct(ci);
@@ -195,7 +193,7 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("strawberriesButton")) {
-			CartItem ci = new CartItem("FRU01", "Strawberries", (Integer) strawberriesSpinner.getValue(),
+			CartItem ci = new CartItem("FRU008", "Strawberries", (Integer) strawberriesSpinner.getValue(),
 					Product.productList.get(7).getPrice());
 
 			cart.addProduct(ci);
@@ -203,7 +201,7 @@ public class FruitsController extends ProductBaseContoller {
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("watermelonButton")) {
-			CartItem ci = new CartItem("FRU01", "Watermelon", (Integer) watermelonSpinner.getValue(),
+			CartItem ci = new CartItem("FRU009", "Watermelon", (Integer) watermelonSpinner.getValue(),
 					Product.productList.get(8).getPrice());
 
 			cart.addProduct(ci);
