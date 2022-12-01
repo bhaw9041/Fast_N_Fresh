@@ -90,7 +90,7 @@ public class PaymentSceneController extends ProductBaseController {
 				saveOrderHistory(conn, item, productInventory);
 				updateInventory(conn, item.getProductId(), netQuantity);
 			}
-			conn.close();
+//			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

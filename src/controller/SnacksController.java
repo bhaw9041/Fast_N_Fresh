@@ -103,7 +103,6 @@ public class SnacksController extends ProductBaseController {
 //				fruitItems.put(rs.getString(1), new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3)));
 //			}
 //			st.close();
-//			conn.close();
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
