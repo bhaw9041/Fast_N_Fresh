@@ -6,13 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import model.Cart;
+import javafx.scene.paint.Color;
 import model.CartItem;
 import model.Product;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import model.DatabaseConnector;
 
 public class VegetablesController extends ProductBaseController {
@@ -104,6 +103,34 @@ public class VegetablesController extends ProductBaseController {
     	
     	tomatoesSpinner.setValueFactory(
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG009").getQuantity(), 0));
+    	
+    	if(inventoryItems.get("FRU001").getQuantity() == 0) {
+			setOutOfStockField(bellPepperPrice, bellPepperSpinner, bellPepperButton);
+		}
+		if(inventoryItems.get("FRU002").getQuantity() == 0) {
+			setOutOfStockField(carrotPrice, carrotSpinner, carrotButton);
+		}
+		if(inventoryItems.get("FRU003").getQuantity() == 0) {
+			setOutOfStockField(cauliflowerPrice, cauliflowerSpinner, cauliflowerButton);
+		}
+		if(inventoryItems.get("FRU004").getQuantity() == 0) {
+			setOutOfStockField(mushroomsPrice, mushroomsSpinner, mushroomsButton);
+		}
+		if(inventoryItems.get("FRU005").getQuantity() == 0) {
+			setOutOfStockField(onionsPrice, onionsSpinner, onionsButton);
+		}
+		if(inventoryItems.get("FRU006").getQuantity() == 0) {
+			setOutOfStockField(potatoesPrice, potatoesSpinner, potatoesButton);
+		}
+		if(inventoryItems.get("FRU007").getQuantity() == 0) {
+			setOutOfStockField(scallionsPrice, scallionsSpinner, scallionsButton);
+		}
+		if(inventoryItems.get("FRU008").getQuantity() == 0) {
+			setOutOfStockField(spinachPrice, spinachSpinner, spinachButton);
+		}
+		if(inventoryItems.get("FRU009").getQuantity() == 0) {
+			setOutOfStockField(tomatoesPrice, tomatoesSpinner, tomatoesButton);
+		}
    
     }
     
@@ -201,5 +228,12 @@ public class VegetablesController extends ProductBaseController {
     	logOff();
     	ScreenController.goToLoginPage(event);
     }
+    
+    private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
+		errorLabel.setText("Out of Stock");
+		errorLabel.setTextFill(Color.RED);
+		spinner.setDisable(true);
+		bt.setDisable(true);
+	}
 
 }
