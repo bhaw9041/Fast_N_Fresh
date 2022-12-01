@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.DatabaseConnector;
 
-public class LoginController {
+public class LoginController extends ProductBaseController {
 	
 	@FXML
 	private TextField tfUsername;
@@ -44,6 +44,7 @@ public class LoginController {
 				String storedPassword = rs.getString(1);
 				if (storedPassword.equals(tfPassword.getText())) {
 					// Pop up login successful
+					userId = tfUsername.getText();
 					System.out.println("Login successful!");
 					ScreenController.goToCatalogPage(event);
 				} else {

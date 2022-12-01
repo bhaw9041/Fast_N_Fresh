@@ -3,6 +3,8 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +46,8 @@ public class PaymentSceneController extends ProductBaseController {
     	ScreenController.goToLoginPage(event);
     }
 
+	private String order_date =new SimpleDateFormat("YYYY-MM-dd").format(new Date());
+
 	@FXML
 	public void handlebtnconfirmorder(ActionEvent event) {
 
@@ -83,6 +87,7 @@ public class PaymentSceneController extends ProductBaseController {
 				String key = item.getProductId();
 				Product productInventory = inventoryItems.get(key);
 				int netQuantity = productInventory.getQuantity() - item.getQuantity();
+				saveOrderHistory(conn, item, productInventory);
 				updateInventory(conn, item.getProductId(), netQuantity);
 			}
 			conn.close();
@@ -101,6 +106,25 @@ public class PaymentSceneController extends ProductBaseController {
 			preparedStmt.setString(2, key);
 			preparedStmt.executeUpdate();
 			preparedStmt.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	private void saveOrderHistory(Connection conn, CartItem item, Product product) {
+		String query = "insert into user_order_history values (?,?,?,?,?)";
+		PreparedStatement orderStmt;
+		try {
+			orderStmt = conn.prepareStatement(query);
+			orderStmt.setString(1, userId);
+			orderStmt.setString(2, item.getProductId());
+			orderStmt.setString(3, item.getItemTotalValue());
+			orderStmt.setString(4, product.getCatalog());
+			orderStmt.setString(5, order_date);
+			orderStmt.executeUpdate();
+			orderStmt.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
