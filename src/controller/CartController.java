@@ -48,8 +48,8 @@ public class CartController extends ProductBaseContoller implements Initializabl
 		ScreenController.goToPaymentPage(event);
 	}
 
-	@FXML
-	void pushtoDB(ActionEvent event) {
+//	@FXML
+//	void pushtoDB(ActionEvent event) {
 //		try {
 //			List<CartItem> cartList = cart.getCartItems();
 //			Connection conn = DatabaseConnector.getInstance();
@@ -63,7 +63,7 @@ public class CartController extends ProductBaseContoller implements Initializabl
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-	}
+//	}
 
 //	private void updateInventory(Connection conn, String key, int quantity) {
 //		String query = "update product_list set productQuantity = ? where productId = ?";
