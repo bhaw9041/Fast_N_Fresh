@@ -58,4 +58,8 @@ public class ScreenController {
     public static void goToSnacksPage(ActionEvent event) {
         showStage(event, "../view/Snacks.fxml", "Snacks");
     }
+    
+    public static void goToCatalogExpensesPage(ActionEvent event) {
+        showStage(event, "../view/CatalogExpenses.fxml", "Catalog wise Expenses");
+    }
 }
