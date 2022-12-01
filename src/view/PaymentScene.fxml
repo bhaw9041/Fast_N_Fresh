@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="myAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentSceneController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="60.0" prefWidth="173.0" text="Checkout">
          <font>
@@ -35,14 +35,14 @@
       <RadioButton layoutX="24.0" layoutY="316.0" mnemonicParsing="false" text="Debit / Credit Card" toggleGroup="$payment" />
       <Label layoutX="17.0" layoutY="244.0" text="Please select from the payment options below" />
       <Label layoutX="24.0" layoutY="352.0" text="Card Number " />
-      <TextField layoutX="24.0" layoutY="369.0" prefHeight="26.0" prefWidth="219.0" />
+      <TextField fx:id="cardnumber" layoutX="24.0" layoutY="369.0" prefHeight="26.0" prefWidth="219.0" />
       <Label layoutX="24.0" layoutY="403.0" prefHeight="26.0" prefWidth="70.0" text="Expiry Date" />
       <DatePicker layoutX="27.0" layoutY="422.0" prefHeight="26.0" prefWidth="111.0" />
       <Label layoutX="210.0" layoutY="407.0" text="CVC/CVV" />
       <TextField layoutX="210.0" layoutY="422.0" prefHeight="26.0" prefWidth="89.0" />
       <Label layoutX="24.0" layoutY="461.0" text="Name on card" />
       <TextField layoutX="25.0" layoutY="478.0" prefHeight="26.0" prefWidth="151.0" />
-      <Button layoutX="255.0" layoutY="504.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="151.0" text="Review Order">
+      <Button fx:id="confirmorder" layoutX="255.0" layoutY="504.0" mnemonicParsing="false" onAction="#handlebtnconfirmorder" prefHeight="35.0" prefWidth="151.0" text="Confirm Order">
          <font>
             <Font size="18.0" />
          </font>
