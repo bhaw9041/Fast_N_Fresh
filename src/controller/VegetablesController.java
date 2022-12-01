@@ -49,58 +49,60 @@ public class VegetablesController extends ProductBaseContoller {
     
     public void initialize() {
     	
-    	bellPepperPrice.setText("$" + Product.productList.get(0).getPrice());
-    	carrotPrice.setText("$" + Product.productList.get(1).getPrice());
-    	cauliflowerPrice.setText("$" + Product.productList.get(2).getPrice());
-    	mushroomsPrice.setText("$" + Product.productList.get(3).getPrice());
-    	onionsPrice.setText("$" + Product.productList.get(4).getPrice());
-    	potatoesPrice.setText("$" + Product.productList.get(5).getPrice());
-    	scallionsPrice.setText("$" + Product.productList.get(6).getPrice());
-    	spinachPrice.setText("$" + Product.productList.get(7).getPrice());
-    	tomatoesPrice.setText("$" + Product.productList.get(8).getPrice());	
-    	
 //    	 Database Connection code	
-// 		try {
-// 			Connection conn = DatabaseConnector.getInstance();
-// 			Statement st = conn.createStatement();
-// 			ResultSet rs = st.executeQuery(query);
-// 			while (rs.next()) {
-// 					String productData = "ProductId: " + rs.getString(1) + " ProductName: " + rs.getString(2) + " Price: "
-//// 						+ rs.getDouble(3) + " Quantity: " + rs.getInt(4);
-//// 				System.out.println(productData);
-// 			}
-// 			st.close();
-// 			conn.close();
-// 		} catch (Exception e) {
-// 			e.printStackTrace();
-// 		}
+	 		try {
+	 			Connection conn = DatabaseConnector.getInstance();
+	 			Statement st = conn.createStatement();
+	 			String query = "select productId, productName, productPrice, productQuantity from product_list where catalog = 'Vegetables'";
+				
+	 			ResultSet rs = st.executeQuery(query);
+	 			while (rs.next()) {
+	 				inventoryItems.put(rs.getString(1),
+							new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3)));
+	 			}
+	 			st.close();
+	 			conn.close();
+			} catch (Exception e) {
+	 			e.printStackTrace();
+	 		}
+	 		
+	    	
+	    	bellPepperPrice.setText("$" + inventoryItems.get("VEG001").getPrice());
+	    	carrotPrice.setText("$" + inventoryItems.get("VEG002").getPrice());
+	    	cauliflowerPrice.setText("$" + inventoryItems.get("VEG003").getPrice());
+	    	mushroomsPrice.setText("$" + inventoryItems.get("VEG004").getPrice());
+	    	onionsPrice.setText("$" + inventoryItems.get("VEG005").getPrice());
+	    	potatoesPrice.setText("$" + inventoryItems.get("VEG006").getPrice());
+	    	scallionsPrice.setText("$" + inventoryItems.get("VEG007").getPrice());
+	    	spinachPrice.setText("$" + inventoryItems.get("VEG008").getPrice());
+	    	tomatoesPrice.setText("$" + inventoryItems.get("VEG009").getPrice());	
     	
     	bellPepperSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(0).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG001").getQuantity(), 0));
     	
     	carrotSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(1).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG002").getQuantity(), 0));
     	
     	cauliflowerSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(2).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG003").getQuantity(), 0));
     	
     	mushroomsSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(3).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG004").getQuantity(), 0));
     	
     	onionsSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(4).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG005").getQuantity(), 0));
     	
     	potatoesSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(5).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG006").getQuantity(), 0));
     	
     	scallionsSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(6).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG007").getQuantity(), 0));
     	
     	spinachSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(7).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG008").getQuantity(), 0));
     	
     	tomatoesSpinner.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(8).getQuantity(), 0));
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG009").getQuantity(), 0));
    
     }
     
@@ -109,62 +111,71 @@ public class VegetablesController extends ProductBaseContoller {
     private void addToCart(javafx.event.ActionEvent event) {
     	
     	if(((Button)event.getTarget()).getId().toString().equals("bellPepperButton")) {
-    		CartItem ci = new CartItem("VEG01", "Bell Pepper", (Integer) bellPepperSpinner.getValue(), Product.productList.get(0).getPrice());
+    		CartItem ci = new CartItem("VEG001", inventoryItems.get("VEG001").getProductName(), 
+    				(Integer) bellPepperSpinner.getValue(), inventoryItems.get("VEG001").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("carrotButton")) {
-    		CartItem ci = new CartItem("VEG02", "Carrot", (Integer) carrotSpinner.getValue(), Product.productList.get(1).getPrice());
+    		CartItem ci = new CartItem("VEG002", inventoryItems.get("VEG002").getProductName(), 
+    				(Integer) carrotSpinner.getValue(), inventoryItems.get("VEG002").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("cauliflowerButton")) {
-    		CartItem ci = new CartItem("VEG03", "Cauliflower", (Integer) cauliflowerSpinner.getValue(), Product.productList.get(2).getPrice());
+    		CartItem ci = new CartItem("VEG003", inventoryItems.get("VEG003").getProductName(), 
+    				(Integer) cauliflowerSpinner.getValue(), inventoryItems.get("VEG003").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("mushroomsButton")) {
-    		CartItem ci = new CartItem("VEG04", "Mushrooms", (Integer) mushroomsSpinner.getValue(), Product.productList.get(3).getPrice());
+    		CartItem ci = new CartItem("VEG004", inventoryItems.get("VEG004").getProductName(),
+    				(Integer) mushroomsSpinner.getValue(), inventoryItems.get("VEG004").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("onionsButton")) {
-    		CartItem ci = new CartItem("VEG05", "Onions", (Integer) onionsSpinner.getValue(), Product.productList.get(4).getPrice());
+    		CartItem ci = new CartItem("VEG005", inventoryItems.get("VEG005").getProductName(), 
+    				(Integer) onionsSpinner.getValue(), inventoryItems.get("VEG005").getPrice());
     		
     		cart.addProduct(ci);
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("potatoesButton")) {
-    		CartItem ci = new CartItem("VEG06", "Potatoes", (Integer) potatoesSpinner.getValue(), Product.productList.get(5).getPrice());
+    		CartItem ci = new CartItem("VEG006", inventoryItems.get("VEG006").getProductName(), 
+    				(Integer) potatoesSpinner.getValue(), inventoryItems.get("VEG006").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("scallionsButton")) {
-    		CartItem ci = new CartItem("VEG07", "Scallions", (Integer) scallionsSpinner.getValue(), Product.productList.get(6).getPrice());
+    		CartItem ci = new CartItem("VEG007", inventoryItems.get("VEG007").getProductName(), 
+    				(Integer) scallionsSpinner.getValue(), inventoryItems.get("VEG007").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("spinachButton")) {
-    		CartItem ci = new CartItem("VEG08", "Spinach", (Integer) spinachSpinner.getValue(), Product.productList.get(7).getPrice());
+    		CartItem ci = new CartItem("VEG008", inventoryItems.get("VEG008").getProductName(), 
+    				(Integer) spinachSpinner.getValue(), inventoryItems.get("VEG008").getPrice());
     		
     		cart.addProduct(ci);
     		
     	}
     	
     	if(((Button)event.getTarget()).getId().toString().equals("tomatoesButton")) {
-    		CartItem ci = new CartItem("VEG09", "Tomatoes", (Integer) tomatoesSpinner.getValue(), Product.productList.get(8).getPrice());
+    		CartItem ci = new CartItem("VEG009", inventoryItems.get("VEG009").getProductName(), 
+    				(Integer) tomatoesSpinner.getValue(), inventoryItems.get("VEG009").getPrice());
     		
     		cart.addProduct(ci);
     		
