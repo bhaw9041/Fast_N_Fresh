@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.Cart;
+import model.DatabaseConnector;
 import model.Product;
 
 public abstract class ProductBaseController {

@@ -61,7 +61,6 @@ public class VegetablesController extends ProductBaseController {
 							new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
 	 			}
 	 			st.close();
-	 			conn.close();
 			} catch (Exception e) {
 	 			e.printStackTrace();
 	 		}
