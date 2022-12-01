@@ -47,5 +47,6 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="753.0" layoutY="44.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="29.0" prefWidth="77.0" text="Logout" />
    </children>
 </AnchorPane>

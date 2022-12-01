@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +15,7 @@ import java.sql.Statement;
 
 import model.DatabaseConnector;
 
-public class FruitsController extends ProductBaseContoller {
+public class FruitsController extends ProductBaseController {
 
 	@FXML
 	Label applePrice;
@@ -246,6 +247,12 @@ public class FruitsController extends ProductBaseContoller {
 
 		ScreenController.goToCartPage(event);
 	}
+	
+	@FXML
+    void goToLogin(ActionEvent event) {
+    	logOff();
+    	ScreenController.goToLoginPage(event);
+    }
 	
 	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
 		errorLabel.setText("Out of Stock");

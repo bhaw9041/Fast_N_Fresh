@@ -9,7 +9,7 @@
 
 <AnchorPane minHeight="700.0" minWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CartController">
    <children>
-      <Label layoutX="70.0" layoutY="49.0" prefHeight="31.0" prefWidth="204.0" text="Order Summary:">
+      <Label layoutX="79.0" layoutY="84.0" prefHeight="31.0" prefWidth="204.0" text="Order Summary:">
          <font>
             <Font size="26.0" />
          </font></Label>
@@ -27,6 +27,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="668.0" layoutY="46.0" mnemonicParsing="false" onAction="#goToPayment" prefHeight="38.0" prefWidth="134.0" text="Proceed to Payment" />
+      <Button layoutX="663.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToPayment" prefHeight="37.0" prefWidth="139.0" text="Proceed to Payment" />
+      <Button layoutX="69.0" layoutY="33.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="31.0" prefWidth="76.0" text="Logout" />
    </children>
 </AnchorPane>
