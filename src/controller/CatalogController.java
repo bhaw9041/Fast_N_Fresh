@@ -21,5 +21,11 @@ public class CatalogController {
     	ScreenController.goToVegetablesPage(event);
     }
     
+    @FXML
+    public void goToSnacks(ActionEvent event) {
+    	
+    	ScreenController.goToSnacksPage(event);
+    }
+    
 }
 
