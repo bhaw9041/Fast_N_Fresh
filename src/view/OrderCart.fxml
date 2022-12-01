@@ -28,6 +28,5 @@
          </font>
       </Label>
       <Button layoutX="668.0" layoutY="46.0" mnemonicParsing="false" onAction="#goToPayment" prefHeight="38.0" prefWidth="134.0" text="Proceed to Payment" />
-      <Button layoutX="85.0" layoutY="470.0" mnemonicParsing="false" onAction="#pushtoDB" prefHeight="26.0" prefWidth="124.0" text="Push to Database" />
    </children>
 </AnchorPane>
