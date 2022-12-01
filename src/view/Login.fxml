@@ -28,7 +28,7 @@
          </font></Button>
       <ImageView fitHeight="338.0" fitWidth="416.0" layoutX="17.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/healthy-groceries.jpg" />
+            <Image url="@../images/healthy-groceries.jpeg" />
          </image>
       </ImageView>
       <ImageView fitHeight="207.0" fitWidth="416.0" layoutX="18.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
