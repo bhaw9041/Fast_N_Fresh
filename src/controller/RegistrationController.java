@@ -60,8 +60,27 @@ public class RegistrationController {
 //    		System.out.println("User Details are not filled!");
 //    	}
 
-	}
+	}		
 
+	public void acceptName() {
+		String name = tfName.getText();
+	}
+	
+	public void acceptContact() {
+		String contact = tfContact.getText();
+	}
+	
+	public void acceptEmail() {
+		String email = tfEmail.getText();
+	}
+	
+	public void acceptUsername() {
+		String email = tfEmail.getText();
+	}
+	public void acceptPassword() {
+		String email = tfEmail.getText();
+	}
+  
 	@FXML
 	void goToLogin(ActionEvent event) {
 		ScreenController.goToLoginPage(event);

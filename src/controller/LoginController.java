@@ -11,6 +11,21 @@ import javafx.scene.control.TextField;
 import model.DatabaseConnector;
 
 public class LoginController {
+	
+	@FXML
+	private TextField tfUsername;
+	
+	@FXML
+	private TextField tfPassword;
+	
+	
+	public void acceptUsername() {
+		String userName = tfUsername.getText();
+	}
+	
+	public void acceptPassword() {
+		String password = tfPassword.getText();
+	}
 
 	@FXML
 	private Button btnRegister;
