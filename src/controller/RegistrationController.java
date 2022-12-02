@@ -74,18 +74,18 @@ public class RegistrationController {
 			preparedStmt.executeUpdate();
 			preparedStmt.close();
 			showErrorDialog("User Registration successful!");
-} catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error Message: " + e.getMessage());
 			e.printStackTrace();
 		}
-//    	} else {
-//    		// Throw error for Registration validation
-//    		System.out.println("User Details are not filled!");
-//    	}
+		//    	} else {
+		//    		// Throw error for Registration validation
+		//    		System.out.println("User Details are not filled!");
+		//    	}
 
 	}
-	
+
 	public void showErrorDialog(String errorMessage) {
 		Dialog<String> dialog = new Dialog<String>();
 		dialog.setTitle("Registration");
@@ -102,26 +102,23 @@ public class RegistrationController {
 		}
 		return false;
 	}
-	
+
 	public boolean isContactValid() {
 		String contact = tfContact.getText();
 		//regex for checking if number is 10digits or not
 		Pattern pattern = Pattern.compile("^\\d{10}$");
-	    Matcher matcher = pattern.matcher(contact);
+		Matcher matcher = pattern.matcher(contact);
 		return matcher.matches();
 	}
-	
+
 	public boolean isValidEmail() {
 		String email = tfEmail.getText();
-		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&-]+)@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
+		String emailRegex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
 		Pattern pattern = Pattern.compile(emailRegex);
-	    Matcher matcher = pattern.matcher(email);
+		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
-	
+
 	public boolean isValidUsername() {
 		String username = tfUserId.getText();
 		if(username.length() > 0) {
@@ -136,7 +133,7 @@ public class RegistrationController {
 		}
 		return false;
 	}
-  
+
 	@FXML
 	void goToLogin(ActionEvent event) {
 		ScreenController.goToLoginPage(event);
