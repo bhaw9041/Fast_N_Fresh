@@ -91,15 +91,15 @@ public class FruitsController extends ProductBaseController {
 			e.printStackTrace();
 		}
 		
-		applePrice.setText("$" + inventoryItems.get("FRU001").getPrice());
-		avocadoPrice.setText("$" + inventoryItems.get("FRU002").getPrice());
-		bananaPrice.setText("$" + inventoryItems.get("FRU003").getPrice());
-		blueberriesPrice.setText("$" + inventoryItems.get("FRU004").getPrice());
-		guavaPrice.setText("$" + inventoryItems.get("FRU005").getPrice());
-		orangePrice.setText("$" + inventoryItems.get("FRU006").getPrice());
-		plumPrice.setText("$" + inventoryItems.get("FRU007").getPrice());
-		strawberriesPrice.setText("$" + inventoryItems.get("FRU008").getPrice());
-		watermelonPrice.setText("$" + inventoryItems.get("FRU009").getPrice());
+		applePrice.setText("$" + inventoryItems.get("FRU001").getPrice() + "/lb");
+		avocadoPrice.setText("$" + inventoryItems.get("FRU002").getPrice() + "/lb");
+		bananaPrice.setText("$" + inventoryItems.get("FRU003").getPrice() + "/lb");
+		blueberriesPrice.setText("$" + inventoryItems.get("FRU004").getPrice() + "/lb");
+		guavaPrice.setText("$" + inventoryItems.get("FRU005").getPrice() + "/lb");
+		orangePrice.setText("$" + inventoryItems.get("FRU006").getPrice() + "/ct");
+		plumPrice.setText("$" + inventoryItems.get("FRU007").getPrice() + "/lb");
+		strawberriesPrice.setText("$" + inventoryItems.get("FRU008").getPrice() + "/lb");
+		watermelonPrice.setText("$" + inventoryItems.get("FRU009").getPrice() + "/ct");
 
 		appleSpinner.setValueFactory(
 				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("FRU001").getQuantity(), 0));
