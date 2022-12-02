@@ -3,12 +3,15 @@ package controller;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Random;
+import java.util.Set;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -33,11 +36,10 @@ public class OrderExpensesController extends ProductBaseController {
 		ScreenController.goToCatalogPage(event);
 	}
 
-	// private XYChart.Series<String, Integer> series1;
-
 	public void initialize() {
 
 		Map<String, Double> orderHistory = new HashMap<String, Double>();
+		List<String> dateHistory = new ArrayList<String>();
 		try {
 			Connection conn = DatabaseConnector.getInstance();
 			Statement st = conn.createStatement();
@@ -45,23 +47,49 @@ public class OrderExpensesController extends ProductBaseController {
 					+ "'";
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-				// Use the HashMap
+				if(orderHistory.containsKey(rs.getString(2))) {
+					orderHistory.put(rs.getString(2), orderHistory.get(rs.getString(2)) + Double.valueOf(rs.getString(1)));
+				}
+				else {
+					orderHistory.put(rs.getString(2), Double.valueOf(rs.getString(1)));
+					dateHistory.add(rs.getString(2));
+				}
+				
 			}
 			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		Collections.sort(dateHistory, new SortItems());
+		
+		for (String d : dateHistory) {
+			 
+            // Printing the sorted items from the List
+            System.out.println(d);
+        }
 
 		XYChart.Series series1 = new XYChart.Series();
-		for (String s : orderHistory.keySet()) {
+		for (String s : dateHistory) {
 			series1.getData().add(new XYChart.Data(s, orderHistory.get(s)));
 		}
-//		series1.getData().add(new XYChart.Data("brazil", 10));
-
-		// number is order amount and
-		// asutralia means date
 
 		barChart.getData().addAll(series1);
 
 	}
+	
+	class SortItems implements Comparator<String> {
+		 
+	    // Method of this class
+	    // @Override
+	    public int compare(String a, String b)
+	    {
+	 
+	        // Returning the value after comparing the objects
+	        // this will sort the data in Ascending order
+	        return a.compareTo(b);
+	    }
+	}
+	
+	
 }

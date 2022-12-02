@@ -66,15 +66,15 @@ public class VegetablesController extends ProductBaseController {
 	 		}
 	 		
 	    	
-	    	bellPepperPrice.setText("$" + inventoryItems.get("VEG001").getPrice());
-	    	carrotPrice.setText("$" + inventoryItems.get("VEG002").getPrice());
-	    	cauliflowerPrice.setText("$" + inventoryItems.get("VEG003").getPrice());
-	    	mushroomsPrice.setText("$" + inventoryItems.get("VEG004").getPrice());
-	    	onionsPrice.setText("$" + inventoryItems.get("VEG005").getPrice());
-	    	potatoesPrice.setText("$" + inventoryItems.get("VEG006").getPrice());
-	    	scallionsPrice.setText("$" + inventoryItems.get("VEG007").getPrice());
-	    	spinachPrice.setText("$" + inventoryItems.get("VEG008").getPrice());
-	    	tomatoesPrice.setText("$" + inventoryItems.get("VEG009").getPrice());	
+	    	bellPepperPrice.setText("$" + inventoryItems.get("VEG001").getPrice() + "/ct");
+	    	carrotPrice.setText("$" + inventoryItems.get("VEG002").getPrice() + "/lb");
+	    	cauliflowerPrice.setText("$" + inventoryItems.get("VEG003").getPrice() + "/ct");
+	    	mushroomsPrice.setText("$" + inventoryItems.get("VEG004").getPrice() + "/lb");
+	    	onionsPrice.setText("$" + inventoryItems.get("VEG005").getPrice() + "/lb");
+	    	potatoesPrice.setText("$" + inventoryItems.get("VEG006").getPrice() + "/lb");
+	    	scallionsPrice.setText("$" + inventoryItems.get("VEG007").getPrice() + "/lb");
+	    	spinachPrice.setText("$" + inventoryItems.get("VEG008").getPrice() + "/bunch");
+	    	tomatoesPrice.setText("$" + inventoryItems.get("VEG009").getPrice() + "/lb");	
     	
     	bellPepperSpinner.setValueFactory(
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG001").getQuantity(), 0));
@@ -103,31 +103,31 @@ public class VegetablesController extends ProductBaseController {
     	tomatoesSpinner.setValueFactory(
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("VEG009").getQuantity(), 0));
     	
-    	if(inventoryItems.get("FRU001").getQuantity() == 0) {
+    	if(inventoryItems.get("VEG001").getQuantity() == 0) {
 			setOutOfStockField(bellPepperPrice, bellPepperSpinner, bellPepperButton);
 		}
-		if(inventoryItems.get("FRU002").getQuantity() == 0) {
+		if(inventoryItems.get("VEG002").getQuantity() == 0) {
 			setOutOfStockField(carrotPrice, carrotSpinner, carrotButton);
 		}
-		if(inventoryItems.get("FRU003").getQuantity() == 0) {
+		if(inventoryItems.get("VEG003").getQuantity() == 0) {
 			setOutOfStockField(cauliflowerPrice, cauliflowerSpinner, cauliflowerButton);
 		}
-		if(inventoryItems.get("FRU004").getQuantity() == 0) {
+		if(inventoryItems.get("VEG004").getQuantity() == 0) {
 			setOutOfStockField(mushroomsPrice, mushroomsSpinner, mushroomsButton);
 		}
-		if(inventoryItems.get("FRU005").getQuantity() == 0) {
+		if(inventoryItems.get("VEG005").getQuantity() == 0) {
 			setOutOfStockField(onionsPrice, onionsSpinner, onionsButton);
 		}
-		if(inventoryItems.get("FRU006").getQuantity() == 0) {
+		if(inventoryItems.get("VEG006").getQuantity() == 0) {
 			setOutOfStockField(potatoesPrice, potatoesSpinner, potatoesButton);
 		}
-		if(inventoryItems.get("FRU007").getQuantity() == 0) {
+		if(inventoryItems.get("VEG007").getQuantity() == 0) {
 			setOutOfStockField(scallionsPrice, scallionsSpinner, scallionsButton);
 		}
-		if(inventoryItems.get("FRU008").getQuantity() == 0) {
+		if(inventoryItems.get("VEG008").getQuantity() == 0) {
 			setOutOfStockField(spinachPrice, spinachSpinner, spinachButton);
 		}
-		if(inventoryItems.get("FRU009").getQuantity() == 0) {
+		if(inventoryItems.get("VEG009").getQuantity() == 0) {
 			setOutOfStockField(tomatoesPrice, tomatoesSpinner, tomatoesButton);
 		}
    
