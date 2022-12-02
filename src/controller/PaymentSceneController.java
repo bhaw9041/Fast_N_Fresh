@@ -39,14 +39,19 @@ public class PaymentSceneController extends ProductBaseController {
 
 	@FXML
 	private TextField cardnumber;
-	
-	@FXML
-    void goToLogin(ActionEvent event) {
-    	logOff();
-    	ScreenController.goToLoginPage(event);
-    }
 
-	private String order_date =new SimpleDateFormat("YYYY-MM-dd").format(new Date());
+	@FXML
+	void goToLogin(ActionEvent event) {
+		logOff();
+		ScreenController.goToLoginPage(event);
+	}
+
+	@FXML
+	void goToCart(ActionEvent event) {
+		ScreenController.goToCartPage(event);
+	}
+
+	private String order_date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
 
 	@FXML
 	public void handlebtnconfirmorder(ActionEvent event) {
@@ -112,7 +117,7 @@ public class PaymentSceneController extends ProductBaseController {
 		}
 
 	}
-	
+
 	private void saveOrderHistory(Connection conn, CartItem item, Product product) {
 		String query = "insert into user_order_history values (?,?,?,?,?)";
 		PreparedStatement orderStmt;
