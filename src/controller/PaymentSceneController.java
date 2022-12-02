@@ -16,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -31,6 +32,8 @@ import model.Product;
 
 public class PaymentSceneController extends ProductBaseController {
 
+	private boolean codStatus = true;
+
 	@FXML
 	private Button confirmorder;
 
@@ -39,44 +42,104 @@ public class PaymentSceneController extends ProductBaseController {
 
 	@FXML
 	private TextField cardnumber;
+
+	@FXML
+	private TextField cvvField;
+
+	@FXML
+	private TextField nameField;
 	
 	@FXML
-    void goToLogin(ActionEvent event) {
-    	logOff();
-    	ScreenController.goToLoginPage(event);
-    }
+    private DatePicker dateField;
 
-	private String order_date =new SimpleDateFormat("YYYY-MM-dd").format(new Date());
+	@FXML
+	private RadioButton cashondelivery;
+
+	@FXML
+	private RadioButton creditcard;
+
+	@FXML
+	private Label lbl;
+
+	@FXML
+	private ToggleGroup payment;
+
+	@FXML
+	void goToLogin(ActionEvent event) {
+		logOff();
+		ScreenController.goToLoginPage(event);
+	}
+
+	@FXML
+	void goToCart(ActionEvent event) {
+		ScreenController.goToCartPage(event);
+	}
+
+	@FXML
+	void alterCardFields(ActionEvent event) {
+		codStatus = true;
+		cardnumber.setDisable(codStatus);
+		cvvField.setDisable(codStatus);
+		nameField.setDisable(codStatus);
+		dateField.setDisable(codStatus);
+	}
+
+	@FXML
+	void alterCOD(ActionEvent event) {
+		codStatus = false;
+		cardnumber.setDisable(codStatus);
+		cvvField.setDisable(codStatus);
+		nameField.setDisable(codStatus);
+		dateField.setDisable(codStatus);
+	}
+	
+	public void initialize() {
+		cardnumber.setDisable(codStatus);
+		cvvField.setDisable(codStatus);
+		nameField.setDisable(codStatus);
+		dateField.setDisable(codStatus);
+	}
+
+	private String order_date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
 
 	@FXML
 	public void handlebtnconfirmorder(ActionEvent event) {
-
-		String cardnum = cardnumber.getText();
-		long number = Long.parseLong(cardnum);
-		Dialog<String> dialog = new Dialog<String>();
-		if (isValid(number)) {
-			updateCartItems();
-			// Setting the title
-			dialog.setTitle("Order Confirmation");
-			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
-			// Setting the content of the dialog
-			dialog.setContentText("Order is successful");
-			// Adding buttons to the dialog pane
-			dialog.getDialogPane().getButtonTypes().add(type);
-			dialog.showAndWait();
-
+		if (codStatus) {
+			proceedOrder(event);
 		} else {
-			// Setting the title
-			dialog.setTitle("Invalid Card");
-			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
-			// Setting the content of the dialog
-			dialog.setContentText("Card Number is invalid");
-			// Adding buttons to the dialog pane
-			dialog.getDialogPane().getButtonTypes().add(type);
-			dialog.showAndWait();
+			String cardnum = cardnumber.getText();
+			long number = Long.parseLong(cardnum);
+			if (isValid(number)) {
+				proceedOrder(event);
+			} else {
+				Dialog<String> dialog = new Dialog<String>();
+				// Setting the title
+				dialog.setTitle("Invalid Card");
+				ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+				// Setting the content of the dialog
+				dialog.setContentText("Card Number is invalid");
+				// Adding buttons to the dialog pane
+				dialog.getDialogPane().getButtonTypes().add(type);
+				dialog.showAndWait();
 
+			}
 		}
 
+	}
+
+	private void proceedOrder(ActionEvent event) {
+		Dialog<String> dialog = new Dialog<String>();
+		updateCartItems();
+		// Setting the title
+		dialog.setTitle("Order Confirmation");
+		ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+		// Setting the content of the dialog
+		dialog.setContentText("Order is successful");
+		// Adding buttons to the dialog pane
+		dialog.getDialogPane().getButtonTypes().add(type);
+		dialog.showAndWait();
+		logOff();
+		ScreenController.goToCatalogPage(event);
 	}
 
 	private void updateCartItems() {
@@ -112,7 +175,7 @@ public class PaymentSceneController extends ProductBaseController {
 		}
 
 	}
-	
+
 	private void saveOrderHistory(Connection conn, CartItem item, Product product) {
 		String query = "insert into user_order_history values (?,?,?,?,?)";
 		PreparedStatement orderStmt;
@@ -298,18 +361,5 @@ public class PaymentSceneController extends ProductBaseController {
 			return number;
 
 	}
-	/*
-	 * 
-	 * @FXML private RadioButton cashondelivery;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @FXML private RadioButton creditcard;
-	 * 
-	 * @FXML private Label lbl;
-	 * 
-	 * @FXML private ToggleGroup payment;
-	 */
 
 }

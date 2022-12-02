@@ -62,4 +62,8 @@ public class ScreenController {
     public static void goToCatalogExpensesPage(ActionEvent event) {
         showStage(event, "../view/CatalogExpenses.fxml", "Catalog wise Expenses");
     }
+    
+    public static void goToOrderHistoryPage(ActionEvent event) {
+        showStage(event, "../view/OrderExpenses.fxml", "Order History");
+    }
 }

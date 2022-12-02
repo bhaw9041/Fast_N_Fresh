@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import model.DatabaseConnector;
@@ -14,6 +15,12 @@ import model.Product;
 public class CatalogExpensesController extends ProductBaseController {
 	
 	@FXML PieChart catalogData;
+	
+	
+	@FXML
+    void goToCatalog(ActionEvent event) {
+		ScreenController.goToCatalogPage(event);
+    }
 	
 	public void initialize() {
 		
@@ -59,12 +66,12 @@ public class CatalogExpensesController extends ProductBaseController {
 		
 		ObservableList<PieChart.Data> pieChartData =
 	            FXCollections.observableArrayList(
-	            new PieChart.Data("Fruits", (fruitShare/totalShare) * 100),
-	            new PieChart.Data("Vegetables", (vegShare/totalShare) * 100),
-	            new PieChart.Data("Snacks", (snackShare/totalShare) * 100),
-	            new PieChart.Data("Beverages", (beverageShare/totalShare) * 100),
-	            new PieChart.Data("Dairy", (dairyShare/totalShare) * 100),
-				new PieChart.Data("Meat", (meatShare/totalShare) * 100));
+	            new PieChart.Data("Fruits $" + String.format("%.2f", fruitShare), (fruitShare/totalShare) * 100),
+	            new PieChart.Data("Vegetables $" + String.format("%.2f", vegShare), (vegShare/totalShare) * 100),
+	            new PieChart.Data("Snacks$" + String.format("%.2f", snackShare), (snackShare/totalShare) * 100),
+	            new PieChart.Data("Beverages$" + String.format("%.2f", beverageShare), (beverageShare/totalShare) * 100),
+	            new PieChart.Data("Dairy$" + String.format("%.2f", dairyShare), (dairyShare/totalShare) * 100),
+				new PieChart.Data("Meat$" + String.format("%.2f", meatShare), (meatShare/totalShare) * 100));
 
 		catalogData.setData(pieChartData);
 	}

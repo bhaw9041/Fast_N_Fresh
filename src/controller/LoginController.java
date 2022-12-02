@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.DatabaseConnector;
 
@@ -19,7 +20,7 @@ public class LoginController extends ProductBaseController {
 	private TextField tfUsername;
 	
 	@FXML
-	private TextField tfPassword;
+	private PasswordField tfPassword;
 	
 	
 	public void acceptUsername() {
@@ -41,14 +42,14 @@ public class LoginController extends ProductBaseController {
 		try {
 			Connection conn = DatabaseConnector.getInstance();
 			Statement st = conn.createStatement();
-			String query = "select password from user_info where user_name = '" + tfUsername.getText() + "'";
+			String query = "select password, full_name from user_info where user_name = '" + tfUsername.getText() + "'";
 			ResultSet rs = st.executeQuery(query);
 			if (rs.next()) {
 				String storedPassword = rs.getString(1);
 				if (storedPassword.equals(tfPassword.getText())) {
 					// Pop up login successful
 					userId = tfUsername.getText();
-					
+					userName = rs.getString(2);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
