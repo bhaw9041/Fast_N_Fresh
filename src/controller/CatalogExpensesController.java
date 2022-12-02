@@ -66,12 +66,12 @@ public class CatalogExpensesController extends ProductBaseController {
 		
 		ObservableList<PieChart.Data> pieChartData =
 	            FXCollections.observableArrayList(
-	            new PieChart.Data("Fruits", (fruitShare/totalShare) * 100),
-	            new PieChart.Data("Vegetables", (vegShare/totalShare) * 100),
-	            new PieChart.Data("Snacks", (snackShare/totalShare) * 100),
-	            new PieChart.Data("Beverages", (beverageShare/totalShare) * 100),
-	            new PieChart.Data("Dairy", (dairyShare/totalShare) * 100),
-				new PieChart.Data("Meat", (meatShare/totalShare) * 100));
+	            new PieChart.Data("Fruits $" + String.valueOf(fruitShare), (fruitShare/totalShare) * 100),
+	            new PieChart.Data("Vegetables $" + String.valueOf(vegShare), (vegShare/totalShare) * 100),
+	            new PieChart.Data("Snacks$" + String.valueOf(snackShare), (snackShare/totalShare) * 100),
+	            new PieChart.Data("Beverages$" + String.valueOf(beverageShare), (beverageShare/totalShare) * 100),
+	            new PieChart.Data("Dairy$" + String.valueOf(dairyShare), (dairyShare/totalShare) * 100),
+				new PieChart.Data("Meat$" + String.valueOf(meatShare), (meatShare/totalShare) * 100));
 
 		catalogData.setData(pieChartData);
 	}
