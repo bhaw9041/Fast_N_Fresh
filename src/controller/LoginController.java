@@ -7,6 +7,9 @@ import java.sql.Statement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import model.DatabaseConnector;
 
@@ -45,15 +48,39 @@ public class LoginController extends ProductBaseController {
 				if (storedPassword.equals(tfPassword.getText())) {
 					// Pop up login successful
 					userId = tfUsername.getText();
+					
+					Dialog<String> dialog = new Dialog<String>();
+					dialog.setTitle("Login");
+					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+					dialog.setContentText("Login successful!");
+					dialog.getDialogPane().getButtonTypes().add(type);
+					dialog.showAndWait();
+					
 					System.out.println("Login successful!");
 					ScreenController.goToCatalogPage(event);
 				} else {
 					// Throw error saying Invalid Password.
+					
+					Dialog<String> dialog = new Dialog<String>();
+					dialog.setTitle("Login");
+					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+					dialog.setContentText("Incorrect Password");
+					dialog.getDialogPane().getButtonTypes().add(type);
+					dialog.showAndWait();
+				
 					System.out.println("Incorrect Password");
 				}
 			} else {
 				// Throw error saying Invalid UserName.
 				System.out.println("Incorrect Username");
+				
+				Dialog<String> dialog = new Dialog<String>();
+				dialog.setTitle("Login");
+				ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+				dialog.setContentText("Incorrect Username");
+				dialog.getDialogPane().getButtonTypes().add(type);
+				dialog.showAndWait();
+				
 			}
 			st.close();
 		} catch (Exception e) {
