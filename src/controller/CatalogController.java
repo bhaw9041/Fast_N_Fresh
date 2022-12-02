@@ -10,7 +10,7 @@ public class CatalogController extends ProductBaseController {
 
 	@FXML
 	private Label lblUserName;
-	
+
 	public void initialize() {
 		lblUserName.setText("Hi " + userName + ", We are Open!!");
 	}
@@ -49,6 +49,11 @@ public class CatalogController extends ProductBaseController {
 	public void goToCatalogExpenses(ActionEvent event) {
 
 		ScreenController.goToCatalogExpensesPage(event);
+	}
+
+	@FXML
+	void goToOrderHistory(ActionEvent event) {
+		ScreenController.goToOrderHistoryPage(event);
 	}
 
 }
