@@ -49,6 +49,11 @@ public class CartController extends ProductBaseController implements Initializab
 	}
 	
 	@FXML
+    void goToCatalog(ActionEvent event) {
+		ScreenController.goToCatalogPage(event);
+    }
+	
+	@FXML
     void goToLogin(ActionEvent event) {
     	logOff();
     	ScreenController.goToLoginPage(event);

@@ -22,12 +22,17 @@
             <TableColumn fx:id="itemTotalValue" prefWidth="159.0" text="Item Total Price" />
         </columns>
       </TableView>
-      <Label fx:id="totalValue" layoutX="563.0" layoutY="470.0" prefHeight="47.0" prefWidth="230.0" text="Total Cart Value: $0">
+      <Label fx:id="totalValue" layoutX="619.0" layoutY="514.0" prefHeight="37.0" prefWidth="211.0" text="Total Cart Value: $0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="663.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToPayment" prefHeight="37.0" prefWidth="139.0" text="Proceed to Payment" />
-      <Button layoutX="69.0" layoutY="33.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="31.0" prefWidth="76.0" text="Logout" />
+      <Button layoutX="575.0" layoutY="40.0" mnemonicParsing="false" onAction="#goToPayment" prefHeight="31.0" prefWidth="130.0" text="Proceed to Payment" />
+      <Button layoutX="724.0" layoutY="40.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="31.0" prefWidth="78.0" text="Logout" />
+      <Button layoutX="69.0" layoutY="40.0" mnemonicParsing="false" onAction="#goToCatalog" prefHeight="31.0" prefWidth="67.0" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
