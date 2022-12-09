@@ -78,15 +78,11 @@ public class FruitsController extends ProductBaseController {
 
 //    	 Database Connection code	
 		try {
-			Connection conn = DatabaseConnector.getInstance();
-			Statement st = conn.createStatement();
-			String query = "select productId, productName, productPrice, productQuantity, catalog from product_list where catalog = 'Fruits'";
-			ResultSet rs = st.executeQuery(query);
+			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Fruits");
 			while (rs.next()) {
 				inventoryItems.put(rs.getString(1),
 						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
 			}
-			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
