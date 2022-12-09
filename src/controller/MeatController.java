@@ -1,12 +1,16 @@
 package controller;
 
+import java.sql.ResultSet;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.paint.Color;
 import model.CartItem;
+import model.DatabaseConnector;
 import model.Product;
 
 public class MeatController extends ProductBaseController {
@@ -74,57 +78,82 @@ public class MeatController extends ProductBaseController {
 
 	public void initialize() {
 
-		chickenPrice.setText("$" + Product.productList.get(0).getPrice());
-		fishPrice.setText("$" + Product.productList.get(1).getPrice());
-		beefPrice.setText("$" + Product.productList.get(2).getPrice());
-		crabPrice.setText("$" + Product.productList.get(3).getPrice());
-		clamPrice.setText("$" + Product.productList.get(4).getPrice());
-		lambPrice.setText("$" + Product.productList.get(5).getPrice());
-		porkPrice.setText("$" + Product.productList.get(6).getPrice());
-		turkeyPrice.setText("$" + Product.productList.get(7).getPrice());
-		prawnsPrice.setText("$" + Product.productList.get(8).getPrice());
-
-//    	 Database Connection code	
-//		try {
-//			Connection conn = DatabaseConnector.getInstance();
-//			Statement st = conn.createStatement();
-//			String query = "select productId, productName, productPrice, productQuantity from product_list where catalog = 'Fruits'";
-//			ResultSet rs = st.executeQuery(query);
-//			while (rs.next()) {
-//				inventoryItems.put(rs.getString(1),
-//						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3)));
-//			}
-//			st.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+//   	 Database Connection code	
+		try {
+			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Meat");
+			while (rs.next()) {
+				inventoryItems.put(rs.getString(1),
+						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
+			}
+			DatabaseConnector.closeStatement();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		chickenPrice.setText("$" + inventoryItems.get("MEA001").getPrice());
+		fishPrice.setText("$" + inventoryItems.get("MEA002").getPrice());
+		beefPrice.setText("$" + inventoryItems.get("MEA003").getPrice());
+		crabPrice.setText("$" + inventoryItems.get("MEA004").getPrice());
+		clamPrice.setText("$" + inventoryItems.get("MEA005").getPrice());
+		lambPrice.setText("$" + inventoryItems.get("MEA006").getPrice());
+		porkPrice.setText("$" + inventoryItems.get("MEA007").getPrice());
+		turkeyPrice.setText("$" + inventoryItems.get("MEA008").getPrice());
+		prawnsPrice.setText("$" + inventoryItems.get("MEA009").getPrice());
 
 		chickenSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(0).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA001").getQuantity(), 0));
 
 		fishSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(1).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA002").getQuantity(), 0));
 
 		beefSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(2).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA003").getQuantity(), 0));
 
 		crabSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(3).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA004").getQuantity(), 0));
 
 		clamSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(4).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA005").getQuantity(), 0));
 
 		lambSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(5).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA006").getQuantity(), 0));
 
 		porkSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(6).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA007").getQuantity(), 0));
 
 		turkeySpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(7).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA008").getQuantity(), 0));
 
 		prawnsSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(8).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("MEA009").getQuantity(), 0));
+		
+		if(inventoryItems.get("MEA001").getQuantity() == 0) {
+			setOutOfStockField(chickenPrice, chickenSpinner, chickenButton);
+		}
+		if(inventoryItems.get("MEA002").getQuantity() == 0) {
+			setOutOfStockField(fishPrice, fishSpinner, fishButton);
+		}
+		if(inventoryItems.get("MEA003").getQuantity() == 0) {
+			setOutOfStockField(beefPrice, beefSpinner, beefButton);
+		}
+		if(inventoryItems.get("MEA004").getQuantity() == 0) {
+			setOutOfStockField(crabPrice, crabSpinner, crabButton);
+		}
+		if(inventoryItems.get("MEA005").getQuantity() == 0) {
+			setOutOfStockField(clamPrice, clamSpinner, clamButton);
+		}
+		if(inventoryItems.get("MEA006").getQuantity() == 0) {
+			setOutOfStockField(lambPrice, lambSpinner, lambButton);
+		}
+		if(inventoryItems.get("MEA007").getQuantity() == 0) {
+			setOutOfStockField(porkPrice, porkSpinner, porkButton);
+		}
+		if(inventoryItems.get("MEA008").getQuantity() == 0) {
+			setOutOfStockField(turkeyPrice, turkeySpinner, turkeyButton);
+		}
+		if(inventoryItems.get("MEA009").getQuantity() == 0) {
+			setOutOfStockField(prawnsPrice, prawnsSpinner, prawnsButton);
+		}
 
 	}
 
@@ -133,7 +162,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("chickenButton")) {
 			CartItem ci = new CartItem("MEA001", "Chicken", (Integer) chickenSpinner.getValue(),
-					Product.productList.get(0).getPrice());
+					inventoryItems.get("MEA001").getPrice());
 
 			cart.addProduct(ci);
 
@@ -141,7 +170,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("fishButton")) {
 			CartItem ci = new CartItem("MEA002", "Fish", (Integer) fishSpinner.getValue(),
-					Product.productList.get(1).getPrice());
+					inventoryItems.get("MEA002").getPrice());
 
 			cart.addProduct(ci);
 
@@ -149,7 +178,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("beefButton")) {
 			CartItem ci = new CartItem("MEA003","Beef", (Integer) beefSpinner.getValue(),
-					Product.productList.get(2).getPrice());
+					inventoryItems.get("MEA003").getPrice());
 
 			cart.addProduct(ci);
 
@@ -157,7 +186,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("crabButton")) {
 			CartItem ci = new CartItem("MEA004", "Crab", (Integer) crabSpinner.getValue(),
-					Product.productList.get(3).getPrice());
+					inventoryItems.get("MEA004").getPrice());
 
 			cart.addProduct(ci);
 
@@ -165,14 +194,14 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("clamButton")) {
 			CartItem ci = new CartItem("MEA005", "Clam", (Integer)clamSpinner.getValue(),
-					Product.productList.get(4).getPrice());
+					inventoryItems.get("MEA005").getPrice());
 
 			cart.addProduct(ci);
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("lambButton")) {
 			CartItem ci = new CartItem("MEA006", "Lamb", (Integer) lambSpinner.getValue(),
-					Product.productList.get(5).getPrice());
+					inventoryItems.get("MEA006").getPrice());
 
 			cart.addProduct(ci);
 
@@ -180,7 +209,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("porkButton")) {
 			CartItem ci = new CartItem("MEA007", "Pork", (Integer) porkSpinner.getValue(),
-					Product.productList.get(6).getPrice());
+					inventoryItems.get("MEA007").getPrice());
 
 			cart.addProduct(ci);
 
@@ -188,7 +217,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("turkeyButton")) {
 			CartItem ci = new CartItem("MEA008", "Turkey", (Integer) turkeySpinner.getValue(),
-					Product.productList.get(7).getPrice());
+					inventoryItems.get("MEA008").getPrice());
 
 			cart.addProduct(ci);
 
@@ -196,7 +225,7 @@ public class MeatController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("prawnsButton")) {
 			CartItem ci = new CartItem("MEA009", "Prawns", (Integer) prawnsSpinner.getValue(),
-					Product.productList.get(8).getPrice());
+					inventoryItems.get("MEA009").getPrice());
 
 			cart.addProduct(ci);
 
@@ -222,9 +251,10 @@ public class MeatController extends ProductBaseController {
     	ScreenController.goToLoginPage(event);
     }
 	
-	
-//	@FXML
-//	public void addDairyProduct(Product p) {
-//		//cart.addProduct(p);
-//	}
+	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
+		errorLabel.setText("Out of Stock");
+		errorLabel.setTextFill(Color.RED);
+		spinner.setDisable(true);
+		bt.setDisable(true);
+	}
 }

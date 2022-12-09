@@ -1,12 +1,16 @@
 package controller;
 
+import java.sql.ResultSet;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.paint.Color;
 import model.CartItem;
+import model.DatabaseConnector;
 import model.Product;
 
 public class BeveragesController extends ProductBaseController {
@@ -41,43 +45,82 @@ public class BeveragesController extends ProductBaseController {
 	@FXML Button seltzerButton;
 
 	public void initialize() {
+		
+		try {
+			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Beverages");
+			while (rs.next()) {
+				inventoryItems.put(rs.getString(1),
+						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
+			}
+			DatabaseConnector.closeStatement();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		waterPrice.setText("$" + Product.productList.get(0).getPrice());
-		celsiusPrice.setText("$" + Product.productList.get(1).getPrice());
-		koolAidPrice.setText("$" + Product.productList.get(2).getPrice());
-		fruitPunchPrice.setText("$" + Product.productList.get(3).getPrice());
-		gatoradePrice.setText("$" + Product.productList.get(4).getPrice());
-		orangeJuicePrice.setText("$" + Product.productList.get(5).getPrice());
-		pepsiPrice.setText("$" + Product.productList.get(6).getPrice());
-		redBullPrice.setText("$" + Product.productList.get(7).getPrice());
-		seltzerPrice.setText("$" + Product.productList.get(8).getPrice());
+		waterPrice.setText("$" + inventoryItems.get("BEV001").getPrice());
+		celsiusPrice.setText("$" + inventoryItems.get("BEV002").getPrice());
+		koolAidPrice.setText("$" + inventoryItems.get("BEV003").getPrice());
+		fruitPunchPrice.setText("$" + inventoryItems.get("BEV004").getPrice());
+		gatoradePrice.setText("$" + inventoryItems.get("BEV005").getPrice());
+		orangeJuicePrice.setText("$" + inventoryItems.get("BEV006").getPrice());
+		pepsiPrice.setText("$" + inventoryItems.get("BEV007").getPrice());
+		redBullPrice.setText("$" + inventoryItems.get("BEV008").getPrice());
+		seltzerPrice.setText("$" + inventoryItems.get("BEV009").getPrice());
 
 		waterSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(0).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV001").getQuantity(), 0));
 
 		celsiusSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(1).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV002").getQuantity(), 0));
 
 		koolAidSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(2).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV003").getQuantity(), 0));
 
 		fruitPunchSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(3).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV004").getQuantity(), 0));
 
 		gatoradeSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(4).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV005").getQuantity(), 0));
 
 		orangeJuiceSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(5).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV006").getQuantity(), 0));
 
 		pepsiSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(6).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV007").getQuantity(), 0));
 
 		redBullSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(7).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV008").getQuantity(), 0));
 
 		seltzerSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(8).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("BEV009").getQuantity(), 0));
+		
+		if(inventoryItems.get("BEV001").getQuantity() == 0) {
+			setOutOfStockField(waterPrice, waterSpinner, waterButton);
+		}
+		if(inventoryItems.get("BEV002").getQuantity() == 0) {
+			setOutOfStockField(celsiusPrice, celsiusSpinner, celsiusButton);
+		}
+		if(inventoryItems.get("BEV003").getQuantity() == 0) {
+			setOutOfStockField(koolAidPrice, koolAidSpinner, koolAidButton);
+		}
+		if(inventoryItems.get("BEV004").getQuantity() == 0) {
+			setOutOfStockField(fruitPunchPrice, fruitPunchSpinner, fruitPunchButton);
+		}
+		if(inventoryItems.get("BEV005").getQuantity() == 0) {
+			setOutOfStockField(gatoradePrice, gatoradeSpinner, gatoradeButton);
+		}
+		if(inventoryItems.get("BEV006").getQuantity() == 0) {
+			setOutOfStockField(orangeJuicePrice, orangeJuiceSpinner, orangeJuiceButton);
+		}
+		if(inventoryItems.get("BEV007").getQuantity() == 0) {
+			setOutOfStockField(pepsiPrice, pepsiSpinner, pepsiButton);
+		}
+		if(inventoryItems.get("BEV008").getQuantity() == 0) {
+			setOutOfStockField(redBullPrice, redBullSpinner, redBullButton);
+		}
+		if(inventoryItems.get("BEV009").getQuantity() == 0) {
+			setOutOfStockField(seltzerPrice, seltzerSpinner, seltzerButton);
+		}
 
 	}
 
@@ -86,7 +129,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("waterButton")) {
 			CartItem ci = new CartItem("BEV001", "Water", (Integer) waterSpinner.getValue(),
-					Product.productList.get(0).getPrice());
+					inventoryItems.get("BEV001").getPrice());
 
 			cart.addProduct(ci);
 
@@ -94,7 +137,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("celsiusButton")) {
 			CartItem ci = new CartItem("BEV002", "Celsius", (Integer) celsiusSpinner.getValue(),
-					Product.productList.get(1).getPrice());
+					inventoryItems.get("BEV002").getPrice());
 
 			cart.addProduct(ci);
 
@@ -102,7 +145,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("koolAidButton")) {
 			CartItem ci = new CartItem("BEV003", "KoolAid", (Integer) koolAidSpinner.getValue(),
-					Product.productList.get(2).getPrice());
+					inventoryItems.get("BEV003").getPrice());
 
 			cart.addProduct(ci);
 
@@ -110,7 +153,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("fruitPunchButton")) {
 			CartItem ci = new CartItem("BEV004", "Fruit Punch", (Integer) fruitPunchSpinner.getValue(),
-					Product.productList.get(3).getPrice());
+					inventoryItems.get("BEV004").getPrice());
 
 			cart.addProduct(ci);
 
@@ -118,14 +161,14 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("gatoradeButton")) {
 			CartItem ci = new CartItem("BEV005", "Gatorade", (Integer)gatoradeSpinner.getValue(),
-					Product.productList.get(4).getPrice());
+					inventoryItems.get("BEV005").getPrice());
 
 			cart.addProduct(ci);
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("orangeJuiceButton")) {
 			CartItem ci = new CartItem("BEV006", "Orange Juice", (Integer) orangeJuiceSpinner.getValue(),
-					Product.productList.get(5).getPrice());
+					inventoryItems.get("BEV006").getPrice());
 
 			cart.addProduct(ci);
 
@@ -133,7 +176,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("pepsiButton")) {
 			CartItem ci = new CartItem("BEV007", "Pepsi", (Integer) pepsiSpinner.getValue(),
-					Product.productList.get(6).getPrice());
+					inventoryItems.get("BEV007").getPrice());
 
 			cart.addProduct(ci);
 
@@ -141,7 +184,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("redBullButton")) {
 			CartItem ci = new CartItem("BEV008", "Red Bull", (Integer) redBullSpinner.getValue(),
-					Product.productList.get(7).getPrice());
+					inventoryItems.get("BEV008").getPrice());
 
 			cart.addProduct(ci);
 
@@ -149,7 +192,7 @@ public class BeveragesController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("seltzerButton")) {
 			CartItem ci = new CartItem("BEV009", "Seltzer", (Integer) seltzerSpinner.getValue(),
-					Product.productList.get(8).getPrice());
+					inventoryItems.get("BEV009").getPrice());
 
 			cart.addProduct(ci);
 
@@ -173,6 +216,13 @@ public class BeveragesController extends ProductBaseController {
 	void goToLogin(ActionEvent event) {
 		logOff();
 		ScreenController.goToLoginPage(event);
+	}
+	
+	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
+		errorLabel.setText("Out of Stock");
+		errorLabel.setTextFill(Color.RED);
+		spinner.setDisable(true);
+		bt.setDisable(true);
 	}
 
 }

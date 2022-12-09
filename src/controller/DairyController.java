@@ -130,7 +130,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("milkButton")) {
 			CartItem ci = new CartItem("DAI001", "Milk", (Integer) milkSpinner.getValue(),
-					Product.productList.get(0).getPrice());
+					inventoryItems.get("DAI001").getPrice());
 
 			cart.addProduct(ci);
 
@@ -138,7 +138,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("butterButton")) {
 			CartItem ci = new CartItem("DAI002", "Butter", (Integer) butterSpinner.getValue(),
-					Product.productList.get(1).getPrice());
+					inventoryItems.get("DAI002").getPrice());
 
 			cart.addProduct(ci);
 
@@ -146,7 +146,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("heavyCreamButton")) {
 			CartItem ci = new CartItem("DAI003", "Heavy Cream", (Integer) heavyCreamSpinner.getValue(),
-					Product.productList.get(2).getPrice());
+					inventoryItems.get("DAI003").getPrice());
 
 			cart.addProduct(ci);
 
@@ -154,7 +154,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("iceCreamButton")) {
 			CartItem ci = new CartItem("DAI004", "Ice Cream", (Integer) iceCreamSpinner.getValue(),
-					Product.productList.get(3).getPrice());
+					inventoryItems.get("DAI004").getPrice());
 
 			cart.addProduct(ci);
 
@@ -162,14 +162,14 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("chocolateMilkButton")) {
 			CartItem ci = new CartItem("DAI005", "Chocolate Milk", (Integer)chocolateMilkSpinner.getValue(),
-					Product.productList.get(4).getPrice());
+					inventoryItems.get("DAI005").getPrice());
 
 			cart.addProduct(ci);
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("sourCreamButton")) {
 			CartItem ci = new CartItem("DAI006", "Sour Cream", (Integer) sourCreamSpinner.getValue(),
-					Product.productList.get(5).getPrice());
+					inventoryItems.get("DAI006").getPrice());
 
 			cart.addProduct(ci);
 
@@ -177,7 +177,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("stringCheeseButton")) {
 			CartItem ci = new CartItem("DAI007", "String Cheese", (Integer) stringCheeseSpinner.getValue(),
-					Product.productList.get(6).getPrice());
+					inventoryItems.get("DAI007").getPrice());
 
 			cart.addProduct(ci);
 
@@ -185,7 +185,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("mozzarellaCheeseButton")) {
 			CartItem ci = new CartItem("DAI008", "Mozzarella Cheese", (Integer) mozzarellaCheeseSpinner.getValue(),
-					Product.productList.get(7).getPrice());
+					inventoryItems.get("DAI008").getPrice());
 
 			cart.addProduct(ci);
 
@@ -193,7 +193,7 @@ public class DairyController extends ProductBaseController {
 
 		if (((Button) event.getTarget()).getId().toString().equals("yogurtButton")) {
 			CartItem ci = new CartItem("DAI009", "Yogurt", (Integer) yogurtSpinner.getValue(),
-					Product.productList.get(8).getPrice());
+					inventoryItems.get("DAI009").getPrice());
 
 			cart.addProduct(ci);
 

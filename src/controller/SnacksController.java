@@ -80,21 +80,16 @@ public class SnacksController extends ProductBaseController {
 	@FXML
 	Button trailButton;
 
-	private Map<String, Product> fruitItems = new HashMap();
-
 	public void initialize() {
-		
-		//Database Connection code	
+
+//   	 Database Connection code	
 		try {
-			Connection conn = DatabaseConnector.getInstance();
-			Statement st = conn.createStatement();
-			String query = "select productId, productName, productPrice, productQuantity, catalog from product_list where catalog = 'Snacks'";
-			ResultSet rs = st.executeQuery(query);
+			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Snacks");
 			while (rs.next()) {
 				inventoryItems.put(rs.getString(1),
 						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
 			}
-			st.close();
+			DatabaseConnector.closeStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,7 +97,7 @@ public class SnacksController extends ProductBaseController {
 		blueberryBarPrice.setText("$" + inventoryItems.get("SNA001").getPrice() + "/ct");
 		cheetosPrice.setText("$" + inventoryItems.get("SNA002").getPrice() + "/ct");
 		chipsPrice.setText("$" + inventoryItems.get("SNA003").getPrice() + "/ct");
-		chocolatePrice.setText("$" +inventoryItems.get("SNA004").getPrice() + "/ct");
+		chocolatePrice.setText("$" + inventoryItems.get("SNA004").getPrice() + "/ct");
 		onionDipPrice.setText("$" + inventoryItems.get("SNA005").getPrice() + "/ct");
 		popcornPrice.setText("$" + inventoryItems.get("SNA006").getPrice() + "/ct");
 		pringlesPrice.setText("$" + inventoryItems.get("SNA007").getPrice() + "/ct");
@@ -135,32 +130,32 @@ public class SnacksController extends ProductBaseController {
 
 		trailSpinner.setValueFactory(
 				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("SNA009").getQuantity(), 0));
-		
-		if(inventoryItems.get("SNA001").getQuantity() == 0) {
+
+		if (inventoryItems.get("SNA001").getQuantity() == 0) {
 			setOutOfStockField(blueberryBarPrice, blueberryBarSpinner, blueberryBarButton);
 		}
-		if(inventoryItems.get("SNA002").getQuantity() == 0) {
+		if (inventoryItems.get("SNA002").getQuantity() == 0) {
 			setOutOfStockField(cheetosPrice, cheetosSpinner, cheetosButton);
 		}
-		if(inventoryItems.get("SNA003").getQuantity() == 0) {
+		if (inventoryItems.get("SNA003").getQuantity() == 0) {
 			setOutOfStockField(chipsPrice, chipsSpinner, chipsButton);
 		}
-		if(inventoryItems.get("SNA004").getQuantity() == 0) {
+		if (inventoryItems.get("SNA004").getQuantity() == 0) {
 			setOutOfStockField(chocolatePrice, chocolateSpinner, chocolateButton);
 		}
-		if(inventoryItems.get("SNA005").getQuantity() == 0) {
+		if (inventoryItems.get("SNA005").getQuantity() == 0) {
 			setOutOfStockField(onionDipPrice, onionDipSpinner, onionDipButton);
 		}
-		if(inventoryItems.get("SNA006").getQuantity() == 0) {
+		if (inventoryItems.get("SNA006").getQuantity() == 0) {
 			setOutOfStockField(popcornPrice, popcornSpinner, popcornButton);
 		}
-		if(inventoryItems.get("SNA007").getQuantity() == 0) {
+		if (inventoryItems.get("SNA007").getQuantity() == 0) {
 			setOutOfStockField(pringlesPrice, pringlesSpinner, pringlesButton);
 		}
-		if(inventoryItems.get("SNA008").getQuantity() == 0) {
+		if (inventoryItems.get("SNA008").getQuantity() == 0) {
 			setOutOfStockField(tostitosPrice, tostitosSpinner, tostitosButton);
 		}
-		if(inventoryItems.get("SNA009").getQuantity() == 0) {
+		if (inventoryItems.get("SNA009").getQuantity() == 0) {
 			setOutOfStockField(trailPrice, trailSpinner, trailButton);
 		}
 
@@ -170,71 +165,71 @@ public class SnacksController extends ProductBaseController {
 	private void addToCart(ActionEvent event) {
 
 		if (((Button) event.getTarget()).getId().toString().equals("blueberryBarButton")) {
-			CartItem ci = new CartItem("SNA001", inventoryItems.get("SNA001").getProductName(), (Integer) blueberryBarSpinner.getValue(),
-					Product.productList.get(0).getPrice());
+			CartItem ci = new CartItem("SNA001", inventoryItems.get("SNA001").getProductName(),
+					(Integer) blueberryBarSpinner.getValue(), inventoryItems.get("SNA001").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("cheetosButton")) {
-			CartItem ci = new CartItem("SNA002", inventoryItems.get("SNA002").getProductName(), (Integer) cheetosSpinner.getValue(),
-					Product.productList.get(1).getPrice());
+			CartItem ci = new CartItem("SNA002", inventoryItems.get("SNA002").getProductName(),
+					(Integer) cheetosSpinner.getValue(), inventoryItems.get("SNA002").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("chipsButton")) {
-			CartItem ci = new CartItem("SNA003", inventoryItems.get("SNA003").getProductName(), (Integer) chipsSpinner.getValue(),
-					Product.productList.get(2).getPrice());
+			CartItem ci = new CartItem("SNA003", inventoryItems.get("SNA003").getProductName(),
+					(Integer) chipsSpinner.getValue(), inventoryItems.get("SNA003").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("chocolateButton")) {
-			CartItem ci = new CartItem("SNA004", inventoryItems.get("SNA004").getProductName(), (Integer) chocolateSpinner.getValue(),
-					Product.productList.get(3).getPrice());
+			CartItem ci = new CartItem("SNA004", inventoryItems.get("SNA004").getProductName(),
+					(Integer) chocolateSpinner.getValue(), inventoryItems.get("SNA004").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("onionDipButton")) {
-			CartItem ci = new CartItem("SNA005", inventoryItems.get("SNA005").getProductName(), (Integer) onionDipSpinner.getValue(),
-					Product.productList.get(4).getPrice());
+			CartItem ci = new CartItem("SNA005", inventoryItems.get("SNA005").getProductName(),
+					(Integer) onionDipSpinner.getValue(), inventoryItems.get("SNA005").getPrice());
 
 			cart.addProduct(ci);
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("popcornButton")) {
-			CartItem ci = new CartItem("SNA006", inventoryItems.get("SNA006").getProductName(), (Integer) popcornSpinner.getValue(),
-					Product.productList.get(5).getPrice());
+			CartItem ci = new CartItem("SNA006", inventoryItems.get("SNA006").getProductName(),
+					(Integer) popcornSpinner.getValue(), inventoryItems.get("SNA006").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("pringlesButton")) {
-			CartItem ci = new CartItem("SNA007", inventoryItems.get("SNA007").getProductName(), (Integer) pringlesSpinner.getValue(),
-					Product.productList.get(6).getPrice());
+			CartItem ci = new CartItem("SNA007", inventoryItems.get("SNA007").getProductName(),
+					(Integer) pringlesSpinner.getValue(), inventoryItems.get("SNA007").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("tostitosButton")) {
-			CartItem ci = new CartItem("SNA008", inventoryItems.get("SNA008").getProductName(), (Integer) tostitosSpinner.getValue(),
-					Product.productList.get(7).getPrice());
+			CartItem ci = new CartItem("SNA008", inventoryItems.get("SNA008").getProductName(),
+					(Integer) tostitosSpinner.getValue(), inventoryItems.get("SNA008").getPrice());
 
 			cart.addProduct(ci);
 
 		}
 
 		if (((Button) event.getTarget()).getId().toString().equals("trailButton")) {
-			CartItem ci = new CartItem("SNA009", inventoryItems.get("SNA009").getProductName(), (Integer) trailSpinner.getValue(),
-					Product.productList.get(8).getPrice());
+			CartItem ci = new CartItem("SNA009", inventoryItems.get("SNA009").getProductName(),
+					(Integer) trailSpinner.getValue(), inventoryItems.get("SNA009").getPrice());
 
 			cart.addProduct(ci);
 
@@ -253,14 +248,14 @@ public class SnacksController extends ProductBaseController {
 
 		ScreenController.goToCartPage(event);
 	}
-	
+
 	@FXML
-    void goToLogin(ActionEvent event) {
-    	logOff();
-    	ScreenController.goToLoginPage(event);
-    }
-	
-	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
+	void goToLogin(ActionEvent event) {
+		logOff();
+		ScreenController.goToLoginPage(event);
+	}
+
+	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt) {
 		errorLabel.setText("Out of Stock");
 		errorLabel.setTextFill(Color.RED);
 		spinner.setDisable(true);
