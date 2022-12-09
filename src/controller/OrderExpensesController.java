@@ -26,6 +26,7 @@ public class OrderExpensesController extends ProductBaseController {
 
 	@FXML
 	BarChart barChart;
+	
 	@FXML
 	private CategoryAxis xAxis;
 	@FXML
@@ -75,6 +76,7 @@ public class OrderExpensesController extends ProductBaseController {
 		}
 
 		barChart.getData().addAll(series1);
+		barChart.setLegendVisible(false);
 
 	}
 	
