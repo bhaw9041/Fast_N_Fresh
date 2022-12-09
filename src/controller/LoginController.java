@@ -59,7 +59,7 @@ public class LoginController extends ProductBaseController {
 					userId = tfUsername.getText();
 					userName = rs.getString(2);
 					tfPassword.setBorder(null);
-					lblPassword.setTextFill(Color.GREEN);
+//					lblPassword.setTextFill(Color.GREEN);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
@@ -75,7 +75,7 @@ public class LoginController extends ProductBaseController {
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
-					lblPassword.setTextFill(Color.RED);
+//					lblPassword.setTextFill(Color.RED);
 					dialog.setContentText("Incorrect Password");
 					dialog.getDialogPane().getButtonTypes().add(type);
 					dialog.showAndWait();
@@ -88,6 +88,7 @@ public class LoginController extends ProductBaseController {
 				
 				Dialog<String> dialog = new Dialog<String>();
 				dialog.setTitle("Login");
+//				lblUsername.setTextFill(Color.RED);
 				ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
 				dialog.setContentText("Incorrect Username");
 				dialog.getDialogPane().getButtonTypes().add(type);

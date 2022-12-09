@@ -63,27 +63,27 @@ public class RegistrationController {
 		// if (tfUserId.getText() != null && tfName.getText() != null && tfContact.getText() !=
 		// null && tfEmail.getText() != null && tfUserPassword.getText() != null) {
 		if(!isNameValid()) {
-			lblName.setTextFill(Color.RED);
+//			lblName.setTextFill(Color.RED);
 			this.showErrorDialog("Name should not be empty");
 			return;
 		}
 		if(!isContactValid()) {
-			lblContact.setTextFill(Color.RED);
+//			lblContact.setTextFill(Color.RED);
 			this.showErrorDialog("Phone number should be valid");
 			return;
 		}
 		if(!isValidEmail()) {
-			lblEmail.setTextFill(Color.RED);
+//			lblEmail.setTextFill(Color.RED);
 			this.showErrorDialog("Please Enter valid Email");
 			return;
 		}
 		if(!isValidUsername()) {
-			lblUserName.setTextFill(Color.RED);
+//			lblUserName.setTextFill(Color.RED);
 			this.showErrorDialog("Username cannot be empty");
 			return;
 		}
 		if(!isValidPassword()) {
-			lblPassword.setTextFill(Color.RED);
+//			lblPassword.setTextFill(Color.RED);
 			this.showErrorDialog("Password cannot be empty");
 			return;
 		}
@@ -124,7 +124,7 @@ public class RegistrationController {
 	public boolean isNameValid() {
 		String name = tfName.getText().trim();
 		if(name.length() > 0) {
-			lblName.setTextFill(Color.GREEN);
+//			lblName.setTextFill(Color.GREEN);
 			return true;
 		}
 		return false;
@@ -135,7 +135,7 @@ public class RegistrationController {
 		//regex for checking if number is 10digits or not
 		Pattern pattern = Pattern.compile("^\\d{10}$");
 		Matcher matcher = pattern.matcher(contact);
-		lblContact.setTextFill(Color.GREEN);
+//		lblContact.setTextFill(Color.GREEN);
 		return matcher.matches();
 	}
 
@@ -145,14 +145,14 @@ public class RegistrationController {
 		Pattern pattern = Pattern.compile(emailRegex);
 		Matcher matcher = pattern.matcher(email);
 		
-		lblEmail.setTextFill(Color.GREEN);
+//		lblEmail.setTextFill(Color.GREEN);
 		return matcher.matches();
 	}
 
 	public boolean isValidUsername() {
 		String username = tfUserId.getText();
 		if(username.length() > 0) {
-			lblUserName.setTextFill(Color.GREEN);
+//			lblUserName.setTextFill(Color.GREEN);
 			return true;
 		}
 		return false;
@@ -160,7 +160,7 @@ public class RegistrationController {
 	public boolean isValidPassword() {
 		String pass = tfUserPassword.getText();
 		if(pass.length() > 0) {
-			lblPassword.setTextFill(Color.GREEN);
+//			lblPassword.setTextFill(Color.GREEN);
 			return true;
 		}
 		return false;
