@@ -83,6 +83,7 @@ public class FruitsController extends ProductBaseController {
 				inventoryItems.put(rs.getString(1),
 						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
 			}
+			DatabaseConnector.closeStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,12 +1,16 @@
 package controller;
 
+import java.sql.ResultSet;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.paint.Color;
 import model.CartItem;
+import model.DatabaseConnector;
 import model.Product;
 
 public class DairyController extends ProductBaseController {
@@ -42,58 +46,82 @@ public class DairyController extends ProductBaseController {
 	@FXML Button yogurtButton;
 
 	public void initialize() {
+		
+		try {
+			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Dairy");
+			while (rs.next()) {
+				inventoryItems.put(rs.getString(1),
+						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3), rs.getString(5)));
+			}
+			DatabaseConnector.closeStatement();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		milkPrice.setText("$" + Product.productList.get(0).getPrice());
-		butterPrice.setText("$" + Product.productList.get(1).getPrice());
-		heavyCreamPrice.setText("$" + Product.productList.get(2).getPrice());
-		iceCreamPrice.setText("$" + Product.productList.get(3).getPrice());
-		chocolateMilkPrice.setText("$" + Product.productList.get(4).getPrice());
-		sourCreamPrice.setText("$" + Product.productList.get(5).getPrice());
-		stringCheesePrice.setText("$" + Product.productList.get(6).getPrice());
-		mozzarellaCheesePrice.setText("$" + Product.productList.get(7).getPrice());
-		yogurtPrice.setText("$" + Product.productList.get(8).getPrice());
-
-//    	 Database Connection code	
-//		try {
-//			Connection conn = DatabaseConnector.getInstance();
-//			Statement st = conn.createStatement();
-//			String query = "select productId, productName, productPrice, productQuantity from product_list where catalog = 'Fruits'";
-//			ResultSet rs = st.executeQuery(query);
-//			while (rs.next()) {
-//				inventoryItems.put(rs.getString(1),
-//						new Product(rs.getString(1), rs.getString(2), rs.getInt(4), rs.getDouble(3)));
-//			}
-//			st.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		milkPrice.setText("$" + inventoryItems.get("DAI001").getPrice());
+		butterPrice.setText("$" + inventoryItems.get("DAI002").getPrice());
+		heavyCreamPrice.setText("$" + inventoryItems.get("DAI003").getPrice());
+		iceCreamPrice.setText("$" + inventoryItems.get("DAI004").getPrice());
+		chocolateMilkPrice.setText("$" + inventoryItems.get("DAI005").getPrice());
+		sourCreamPrice.setText("$" + inventoryItems.get("DAI006").getPrice());
+		stringCheesePrice.setText("$" + inventoryItems.get("DAI007").getPrice());
+		mozzarellaCheesePrice.setText("$" + inventoryItems.get("DAI008").getPrice());
+		yogurtPrice.setText("$" + inventoryItems.get("DAI009").getPrice());
 
 		milkSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(0).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI001").getQuantity(), 0));
 
 		butterSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(1).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI002").getQuantity(), 0));
 
 		heavyCreamSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(2).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI003").getQuantity(), 0));
 
 		iceCreamSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(3).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI004").getQuantity(), 0));
 
 		chocolateMilkSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(4).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI005").getQuantity(), 0));
 
 		sourCreamSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(5).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI006").getQuantity(), 0));
 
 		stringCheeseSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(6).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI007").getQuantity(), 0));
 
 		mozzarellaCheeseSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(7).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI008").getQuantity(), 0));
 
 		yogurtSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Product.productList.get(8).getQuantity(), 0));
+				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, inventoryItems.get("DAI009").getQuantity(), 0));
+		
+		if(inventoryItems.get("DAI001").getQuantity() == 0) {
+			setOutOfStockField(milkPrice, milkSpinner, milkButton);
+		}
+		if(inventoryItems.get("DAI002").getQuantity() == 0) {
+			setOutOfStockField(butterPrice, butterSpinner, butterButton);
+		}
+		if(inventoryItems.get("DAI003").getQuantity() == 0) {
+			setOutOfStockField(heavyCreamPrice, heavyCreamSpinner, heavyCreamButton);
+		}
+		if(inventoryItems.get("DAI004").getQuantity() == 0) {
+			setOutOfStockField(iceCreamPrice, iceCreamSpinner, iceCreamButton);
+		}
+		if(inventoryItems.get("DAI005").getQuantity() == 0) {
+			setOutOfStockField(chocolateMilkPrice, chocolateMilkSpinner, chocolateMilkButton);
+		}
+		if(inventoryItems.get("DAI006").getQuantity() == 0) {
+			setOutOfStockField(sourCreamPrice, sourCreamSpinner, sourCreamButton);
+		}
+		if(inventoryItems.get("DAI007").getQuantity() == 0) {
+			setOutOfStockField(stringCheesePrice, stringCheeseSpinner, stringCheeseButton);
+		}
+		if(inventoryItems.get("DAI008").getQuantity() == 0) {
+			setOutOfStockField(mozzarellaCheesePrice, mozzarellaCheeseSpinner, mozzarellaCheeseButton);
+		}
+		if(inventoryItems.get("DAI009").getQuantity() == 0) {
+			setOutOfStockField(yogurtPrice, yogurtSpinner, yogurtButton);
+		}
 
 	}
 
@@ -190,5 +218,12 @@ public class DairyController extends ProductBaseController {
     	logOff();
     	ScreenController.goToLoginPage(event);
     }
+	
+	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
+		errorLabel.setText("Out of Stock");
+		errorLabel.setTextFill(Color.RED);
+		spinner.setDisable(true);
+		bt.setDisable(true);
+	}
 	
 }
