@@ -49,7 +49,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnMeat" contentDisplay="TOP" layoutX="599.0" layoutY="350.0" mnemonicParsing="false" prefHeight="163.0" prefWidth="218.0" text="Meat">
+      <Button fx:id="btnMeat" contentDisplay="TOP" layoutX="599.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToMeat" prefHeight="163.0" prefWidth="218.0" text="Meat">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
