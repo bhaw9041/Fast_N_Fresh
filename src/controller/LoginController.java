@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -44,6 +45,13 @@ public class LoginController extends ProductBaseController {
 
 	@FXML
 	private Button btnSignIn;
+	
+	@FXML
+    private Label errorPassLabel;
+
+    @FXML
+    private Label errorUserLabel;
+
 
 	@FXML
 	public void goToCatalog(ActionEvent event) {
@@ -54,11 +62,15 @@ public class LoginController extends ProductBaseController {
 			ResultSet rs = st.executeQuery(query);
 			if (rs.next()) {
 				String storedPassword = rs.getString(1);
+				tfUsername.setStyle(null);
+				errorUserLabel.setVisible(false);
 				if (storedPassword.equals(tfPassword.getText())) {
 					// Pop up login successful
 					userId = tfUsername.getText();
 					userName = rs.getString(2);
 					tfPassword.setBorder(null);
+					tfPassword.setStyle(null);
+					errorPassLabel.setVisible(false);
 //					lblPassword.setTextFill(Color.GREEN);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
@@ -71,7 +83,9 @@ public class LoginController extends ProductBaseController {
 					ScreenController.goToCatalogPage(event);
 				} else {
 					// Throw error saying Invalid Password.
-					
+					tfPassword.setStyle("-fx-border-color: red; -fx-border-width: 2px ;");
+					new animatefx.animation.Shake(tfPassword).play();
+					errorPassLabel.setVisible(true);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
@@ -83,9 +97,9 @@ public class LoginController extends ProductBaseController {
 					System.out.println("Incorrect Password");
 				}
 			} else {
-				// Throw error saying Invalid UserName.
-				System.out.println("Incorrect Username");
-				
+				tfUsername.setStyle("-fx-border-color: red; -fx-border-width: 2px ;");
+				new animatefx.animation.Shake(tfUsername).play();
+				errorUserLabel.setVisible(true);
 				Dialog<String> dialog = new Dialog<String>();
 				dialog.setTitle("Login");
 //				lblUsername.setTextFill(Color.RED);
