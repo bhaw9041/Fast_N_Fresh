@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.paint.Color;
 import model.DatabaseConnector;
 import java.util.regex.*;
 
@@ -36,28 +38,52 @@ public class RegistrationController {
 
 	@FXML
 	private PasswordField tfUserPassword;
+	
+	@FXML
+	private Label lblName;
+	
+	@FXML
+	private Label lblContact;
+	
+	@FXML
+	private Label lblEmail;
+	
+	@FXML
+	private Label lblUserName;
+	
+	@FXML
+	private Label lblPassword;
+	
+	
+	
+	
 
 	@FXML
 	void registerUser(ActionEvent event) {
 		// if (tfUserId.getText() != null && tfName.getText() != null && tfContact.getText() !=
 		// null && tfEmail.getText() != null && tfUserPassword.getText() != null) {
 		if(!isNameValid()) {
+//			lblName.setTextFill(Color.RED);
 			this.showErrorDialog("Name should not be empty");
 			return;
 		}
 		if(!isContactValid()) {
+//			lblContact.setTextFill(Color.RED);
 			this.showErrorDialog("Phone number should be valid");
 			return;
 		}
 		if(!isValidEmail()) {
+//			lblEmail.setTextFill(Color.RED);
 			this.showErrorDialog("Please Enter valid Email");
 			return;
 		}
 		if(!isValidUsername()) {
+//			lblUserName.setTextFill(Color.RED);
 			this.showErrorDialog("Username cannot be empty");
 			return;
 		}
 		if(!isValidPassword()) {
+//			lblPassword.setTextFill(Color.RED);
 			this.showErrorDialog("Password cannot be empty");
 			return;
 		}
@@ -98,6 +124,7 @@ public class RegistrationController {
 	public boolean isNameValid() {
 		String name = tfName.getText().trim();
 		if(name.length() > 0) {
+//			lblName.setTextFill(Color.GREEN);
 			return true;
 		}
 		return false;
@@ -108,6 +135,7 @@ public class RegistrationController {
 		//regex for checking if number is 10digits or not
 		Pattern pattern = Pattern.compile("^\\d{10}$");
 		Matcher matcher = pattern.matcher(contact);
+//		lblContact.setTextFill(Color.GREEN);
 		return matcher.matches();
 	}
 
@@ -116,12 +144,15 @@ public class RegistrationController {
 		String emailRegex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
 		Pattern pattern = Pattern.compile(emailRegex);
 		Matcher matcher = pattern.matcher(email);
+		
+//		lblEmail.setTextFill(Color.GREEN);
 		return matcher.matches();
 	}
 
 	public boolean isValidUsername() {
 		String username = tfUserId.getText();
 		if(username.length() > 0) {
+//			lblUserName.setTextFill(Color.GREEN);
 			return true;
 		}
 		return false;
@@ -129,6 +160,7 @@ public class RegistrationController {
 	public boolean isValidPassword() {
 		String pass = tfUserPassword.getText();
 		if(pass.length() > 0) {
+//			lblPassword.setTextFill(Color.GREEN);
 			return true;
 		}
 		return false;

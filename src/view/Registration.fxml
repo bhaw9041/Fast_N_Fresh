@@ -28,9 +28,9 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="332.0" layoutY="321.0" prefHeight="17.0" prefWidth="71.0" text="User Name:" />
+      <Label fx:id="lblUserName" layoutX="332.0" layoutY="321.0" prefHeight="17.0" prefWidth="71.0" text="User Name:" />
       <TextField fx:id="tfUserId" layoutX="431.0" layoutY="317.0" />
       <PasswordField fx:id="tfUserPassword" layoutX="431.0" layoutY="376.0" />
-      <Label layoutX="332.0" layoutY="376.0" prefHeight="26.0" prefWidth="71.0" text="Password:" />
+      <Label fx:id="lblPassword" layoutX="332.0" layoutY="376.0" prefHeight="26.0" prefWidth="71.0" text="Password:" />
    </children>
 </AnchorPane>

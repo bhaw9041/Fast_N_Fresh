@@ -10,8 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import model.DatabaseConnector;
 
 public class LoginController extends ProductBaseController {
@@ -21,6 +23,12 @@ public class LoginController extends ProductBaseController {
 	
 	@FXML
 	private PasswordField tfPassword;
+	
+	@FXML
+	private Label lblPassword;
+	
+	@FXML
+	private Label lblUsername;
 	
 	
 	public void acceptUsername() {
@@ -50,6 +58,8 @@ public class LoginController extends ProductBaseController {
 					// Pop up login successful
 					userId = tfUsername.getText();
 					userName = rs.getString(2);
+					tfPassword.setBorder(null);
+//					lblPassword.setTextFill(Color.GREEN);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
@@ -65,6 +75,7 @@ public class LoginController extends ProductBaseController {
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+//					lblPassword.setTextFill(Color.RED);
 					dialog.setContentText("Incorrect Password");
 					dialog.getDialogPane().getButtonTypes().add(type);
 					dialog.showAndWait();
@@ -77,6 +88,7 @@ public class LoginController extends ProductBaseController {
 				
 				Dialog<String> dialog = new Dialog<String>();
 				dialog.setTitle("Login");
+//				lblUsername.setTextFill(Color.RED);
 				ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
 				dialog.setContentText("Incorrect Username");
 				dialog.getDialogPane().getButtonTypes().add(type);

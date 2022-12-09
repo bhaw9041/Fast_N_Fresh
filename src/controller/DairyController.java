@@ -191,9 +191,4 @@ public class DairyController extends ProductBaseController {
     	ScreenController.goToLoginPage(event);
     }
 	
-	
-//	@FXML
-//	public void addDairyProduct(Product p) {
-//		//cart.addProduct(p);
-//	}
 }

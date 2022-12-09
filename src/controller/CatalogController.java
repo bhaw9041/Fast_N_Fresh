@@ -38,6 +38,12 @@ public class CatalogController extends ProductBaseController {
 
 		ScreenController.goToDairyPage(event);
 	}
+	
+	@FXML
+	public void goToBeverages(ActionEvent event) {
+
+		ScreenController.goToBeveragesPage(event);
+	}
 
 	@FXML
 	void goToLogin(ActionEvent event) {
