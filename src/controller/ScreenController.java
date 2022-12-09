@@ -31,6 +31,9 @@ public class ScreenController {
         showStage(event, "../view/Vegetables.fxml", "Vegetables");
     }
 	
+	public static void goToMeatPage(ActionEvent event) {
+        showStage(event, "../view/Meat.fxml", "Meat");
+    }
 	static void goToCartPage(ActionEvent event) {
         showStage(event, "../view/OrderCart.fxml", "Cart");
     }

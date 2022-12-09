@@ -46,6 +46,12 @@ public class CatalogController extends ProductBaseController {
 	}
 
 	@FXML
+	public void goToMeat(ActionEvent event) {
+
+		ScreenController.goToMeatPage(event);
+	}
+
+	@FXML
 	void goToLogin(ActionEvent event) {
 		logOff();
 		ScreenController.goToLoginPage(event);
