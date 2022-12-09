@@ -115,7 +115,7 @@ public class RegistrationController {
 	public void showErrorDialog(String errorMessage) {
 		Dialog<String> dialog = new Dialog<String>();
 		dialog.setTitle("Registration");
-		ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+		ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 		dialog.setContentText(errorMessage);
 		dialog.getDialogPane().getButtonTypes().add(type);
 		dialog.showAndWait();
