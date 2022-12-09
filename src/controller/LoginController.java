@@ -62,7 +62,7 @@ public class LoginController extends ProductBaseController {
 //					lblPassword.setTextFill(Color.GREEN);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
-					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+					ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 					dialog.setContentText("Login successful!");
 					dialog.getDialogPane().getButtonTypes().add(type);
 					dialog.showAndWait();
@@ -74,7 +74,7 @@ public class LoginController extends ProductBaseController {
 					
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
-					ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+					ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 //					lblPassword.setTextFill(Color.RED);
 					dialog.setContentText("Incorrect Password");
 					dialog.getDialogPane().getButtonTypes().add(type);
@@ -89,7 +89,7 @@ public class LoginController extends ProductBaseController {
 				Dialog<String> dialog = new Dialog<String>();
 				dialog.setTitle("Login");
 //				lblUsername.setTextFill(Color.RED);
-				ButtonType type = new ButtonType("ok", ButtonData.OK_DONE);
+				ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 				dialog.setContentText("Incorrect Username");
 				dialog.getDialogPane().getButtonTypes().add(type);
 				dialog.showAndWait();

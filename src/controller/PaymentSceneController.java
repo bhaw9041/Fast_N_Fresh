@@ -115,7 +115,7 @@ public class PaymentSceneController extends ProductBaseController {
 				Dialog<String> dialog = new Dialog<String>();
 				// Setting the title
 				dialog.setTitle("Invalid Card");
-				ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+				ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 				// Setting the content of the dialog
 				dialog.setContentText("Card Number is invalid");
 				// Adding buttons to the dialog pane
@@ -132,7 +132,7 @@ public class PaymentSceneController extends ProductBaseController {
 		updateCartItems();
 		// Setting the title
 		dialog.setTitle("Order Confirmation");
-		ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+		ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 		// Setting the content of the dialog
 		dialog.setContentText("Order is successful");
 		// Adding buttons to the dialog pane
