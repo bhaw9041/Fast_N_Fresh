@@ -32,5 +32,10 @@
       <TextField fx:id="tfUserId" layoutX="431.0" layoutY="317.0" />
       <PasswordField fx:id="tfUserPassword" layoutX="431.0" layoutY="376.0" />
       <Label fx:id="lblPassword" layoutX="332.0" layoutY="376.0" prefHeight="26.0" prefWidth="71.0" text="Password:" />
+      <Label fx:id="errorNameField" layoutX="436.0" layoutY="177.0" text="Name cannot be empty" textFill="#dd0b0b" visible="false" />
+      <Label fx:id="errorEmail" layoutX="435.0" layoutY="288.0" text="Enter a valid Email Id" textFill="#dd0b0b" visible="false" />
+      <Label fx:id="errorContact" layoutX="434.0" layoutY="233.0" prefHeight="17.0" prefWidth="153.0" text="Enter a valid phone number" textFill="#dd0b0b" visible="false" />
+      <Label fx:id="errorUserName" layoutX="433.0" layoutY="350.0" text="Username cannot be empty" textFill="#dd0b0b" visible="false" />
+      <Label fx:id="errorPassword" layoutX="434.0" layoutY="408.0" text="Password cannot be empty" textFill="#dd0b0b" visible="false" />
    </children>
 </AnchorPane>

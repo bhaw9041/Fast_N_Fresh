@@ -14,6 +14,8 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import model.DatabaseConnector;
 
@@ -78,8 +80,6 @@ public class LoginController extends ProductBaseController {
 					dialog.setContentText("Login successful!");
 					dialog.getDialogPane().getButtonTypes().add(type);
 					dialog.showAndWait();
-					
-					System.out.println("Login successful!");
 					ScreenController.goToCatalogPage(event);
 				} else {
 					// Throw error saying Invalid Password.

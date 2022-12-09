@@ -38,6 +38,9 @@ public class PaymentSceneController extends ProductBaseController {
 	private Button confirmorder;
 
 	@FXML
+	private TextField addressField;
+
+	@FXML
 	private AnchorPane myAnchorPane;
 
 	@FXML
@@ -48,9 +51,9 @@ public class PaymentSceneController extends ProductBaseController {
 
 	@FXML
 	private TextField nameField;
-	
+
 	@FXML
-    private DatePicker dateField;
+	private DatePicker dateField;
 
 	@FXML
 	private RadioButton cashondelivery;
@@ -60,6 +63,12 @@ public class PaymentSceneController extends ProductBaseController {
 
 	@FXML
 	private Label lbl;
+
+	@FXML
+	private Label errorAddress;
+
+	@FXML
+	private Label errorCardNumber;
 
 	@FXML
 	private ToggleGroup payment;
@@ -92,7 +101,7 @@ public class PaymentSceneController extends ProductBaseController {
 		nameField.setDisable(codStatus);
 		dateField.setDisable(codStatus);
 	}
-	
+
 	public void initialize() {
 		cardnumber.setDisable(codStatus);
 		cvvField.setDisable(codStatus);
@@ -104,25 +113,47 @@ public class PaymentSceneController extends ProductBaseController {
 
 	@FXML
 	public void handlebtnconfirmorder(ActionEvent event) {
-		if (codStatus) {
-			proceedOrder(event);
-		} else {
-			String cardnum = cardnumber.getText();
-			long number = Long.parseLong(cardnum);
-			if (isValid(number)) {
+		if (isAddressValid()) {
+			errorAddress.setVisible(false);
+			addressField.setStyle(null);
+			if (codStatus) {
 				proceedOrder(event);
 			} else {
-				Dialog<String> dialog = new Dialog<String>();
-				// Setting the title
-				dialog.setTitle("Invalid Card");
-				ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
-				// Setting the content of the dialog
-				dialog.setContentText("Card Number is invalid");
-				// Adding buttons to the dialog pane
-				dialog.getDialogPane().getButtonTypes().add(type);
-				dialog.showAndWait();
+				String cardnum = cardnumber.getText();
+				long number = Long.parseLong(cardnum);
+				if (isValid(number)) {
+					errorCardNumber.setVisible(false);
+					cardnumber.setStyle(null);
+					proceedOrder(event);
+				} else {
+					errorCardNumber.setVisible(true);
+					cardnumber.setStyle("-fx-border-color: red; -fx-border-width: 2px ;");
+					new animatefx.animation.Shake(cardnumber).play();
+					Dialog<String> dialog = new Dialog<String>();
+					// Setting the title
+					dialog.setTitle("Invalid Card");
+					ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
+					// Setting the content of the dialog
+					dialog.setContentText("Card Number is invalid");
+					// Adding buttons to the dialog pane
+					dialog.getDialogPane().getButtonTypes().add(type);
+					dialog.showAndWait();
 
+				}
 			}
+		} else {
+			errorAddress.setVisible(true);
+			addressField.setStyle("-fx-border-color: red; -fx-border-width: 2px ;");
+			new animatefx.animation.Shake(addressField).play();
+			Dialog<String> dialog = new Dialog<String>();
+			// Setting the title
+			dialog.setTitle("Invalid Address");
+			ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
+			// Setting the content of the dialog
+			dialog.setContentText("Address cannot be empty");
+			// Adding buttons to the dialog pane
+			dialog.getDialogPane().getButtonTypes().add(type);
+			dialog.showAndWait();
 		}
 
 	}
@@ -134,7 +165,7 @@ public class PaymentSceneController extends ProductBaseController {
 		dialog.setTitle("Order Confirmation");
 		ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 		// Setting the content of the dialog
-		dialog.setContentText("Order is successful");
+		dialog.setContentText("Order is successfully placed!");
 		// Adding buttons to the dialog pane
 		dialog.getDialogPane().getButtonTypes().add(type);
 		dialog.showAndWait();
@@ -193,6 +224,14 @@ public class PaymentSceneController extends ProductBaseController {
 			e.printStackTrace();
 		}
 
+	}
+
+	public boolean isAddressValid() {
+		String name = addressField.getText().trim();
+		if (name.length() > 0) {
+			return true;
+		}
+		return false;
 	}
 
 	/** Return true if the card number is valid */
