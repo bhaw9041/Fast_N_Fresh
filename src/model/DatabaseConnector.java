@@ -12,7 +12,9 @@ public class DatabaseConnector {
 
 	private DatabaseConnector() {
 	}
-
+	
+	// Singleton class instance to avoid multiple Database connections
+	// Returns Database connection instance
 	public static Connection getInstance() throws Exception {
 		if (databaseConnection == null) {
 			synchronized (DatabaseConnector.class) {
@@ -26,6 +28,8 @@ public class DatabaseConnector {
 		return databaseConnection;
 	}
 
+	// getItemsFromCatalog method is used to fetch the product list based on catalogId from the database
+	// Returns the ResultSet
 	public static ResultSet getItemsFromCatalog(String catalogId) {
 		try {
 			Connection conn = DatabaseConnector.getInstance();
@@ -40,6 +44,7 @@ public class DatabaseConnector {
 		}
 	}
 	
+	// closeStatement is a common method to close the statement
 	public static void closeStatement() {
 		try {
 			st.close();

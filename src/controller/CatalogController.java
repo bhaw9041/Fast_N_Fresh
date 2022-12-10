@@ -11,6 +11,8 @@ public class CatalogController extends ProductBaseController {
 	@FXML
 	private Label lblUserName;
 
+	// CatalogController object is used to traverse across the Screens and Welcome the User post successful Login
+	@Override
 	public void initialize() {
 		lblUserName.setText("Hi " + userName + ", We are Open!!");
 	}

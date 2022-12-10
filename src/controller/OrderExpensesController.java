@@ -26,7 +26,7 @@ public class OrderExpensesController extends ProductBaseController {
 
 	@FXML
 	BarChart barChart;
-	
+
 	@FXML
 	private CategoryAxis xAxis;
 	@FXML
@@ -37,8 +37,10 @@ public class OrderExpensesController extends ProductBaseController {
 		ScreenController.goToCatalogPage(event);
 	}
 
+	@Override
 	public void initialize() {
-
+		// Fetch the user order information from the Database and calculate the purchase
+		// value for each ordered date and store in the Hashmap
 		Map<String, Double> orderHistory = new HashMap<String, Double>();
 		List<String> dateHistory = new ArrayList<String>();
 		try {
@@ -48,27 +50,22 @@ public class OrderExpensesController extends ProductBaseController {
 					+ "'";
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-				if(orderHistory.containsKey(rs.getString(2))) {
-					orderHistory.put(rs.getString(2), orderHistory.get(rs.getString(2)) + Double.valueOf(rs.getString(1)));
-				}
-				else {
+				if (orderHistory.containsKey(rs.getString(2))) {
+					orderHistory.put(rs.getString(2),
+							orderHistory.get(rs.getString(2)) + Double.valueOf(rs.getString(1)));
+				} else {
 					orderHistory.put(rs.getString(2), Double.valueOf(rs.getString(1)));
 					dateHistory.add(rs.getString(2));
 				}
-				
+
 			}
 			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
+		// Sort the List as per the date in the ascending order
 		Collections.sort(dateHistory, new SortItems());
-		
-		for (String d : dateHistory) {
-			 
-            // Printing the sorted items from the List
-            System.out.println(d);
-        }
 
 		XYChart.Series series1 = new XYChart.Series();
 		for (String s : dateHistory) {
@@ -79,19 +76,17 @@ public class OrderExpensesController extends ProductBaseController {
 		barChart.setLegendVisible(false);
 
 	}
-	
+
 	class SortItems implements Comparator<String> {
-		 
-	    // Method of this class
-	    // @Override
-	    public int compare(String a, String b)
-	    {
-	 
-	        // Returning the value after comparing the objects
-	        // this will sort the data in Ascending order
-	        return a.compareTo(b);
-	    }
+
+		// Method of this class
+		// @Override
+		public int compare(String a, String b) {
+
+			// Returning the value after comparing the objects
+			// this will sort the data in Ascending order
+			return a.compareTo(b);
+		}
 	}
-	
-	
+
 }

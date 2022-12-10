@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Product {
 	
 	private int quantity;
@@ -10,8 +8,7 @@ public class Product {
 	private String productId;
 	private String catalog;
 
-	public static ArrayList<Product> productList = new ArrayList<>();
-	
+	// Product entity is used to store the product information from the Inventory Database store.
 	public Product(String productId, String productName, int quantity, double price, String catalogId){
 		this.productId = productId;
 		this.productName = productName;
@@ -52,6 +49,7 @@ public class Product {
 		this.productName = productName;
 	}
 	
+	@Override
 	public String toString() {
 		return "Product{" + "productId=" + productId + "productName=" + productName + "quantity=" + quantity + "price=" + price +'}';
 		

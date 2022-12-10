@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,9 +13,6 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import model.DatabaseConnector;
 
 public class LoginController extends ProductBaseController {
@@ -32,15 +28,6 @@ public class LoginController extends ProductBaseController {
 	
 	@FXML
 	private Label lblUsername;
-	
-	
-	public void acceptUsername() {
-		String userName = tfUsername.getText();
-	}
-	
-	public void acceptPassword() {
-		String password = tfPassword.getText();
-	}
 
 	@FXML
 	private Button btnRegister;
@@ -53,8 +40,14 @@ public class LoginController extends ProductBaseController {
 
     @FXML
     private Label errorUserLabel;
+    
+    @Override
+	void initialize() {
+		tfUsername.setText(null);
+		tfPassword.setText(null);
+	}
 
-
+    // Validate the user credentials and go to Catalog Page
 	@FXML
 	public void goToCatalog(ActionEvent event) {
 		try {
@@ -73,7 +66,6 @@ public class LoginController extends ProductBaseController {
 					tfPassword.setBorder(null);
 					tfPassword.setStyle(null);
 					errorPassLabel.setVisible(false);
-//					lblPassword.setTextFill(Color.GREEN);
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
@@ -89,7 +81,6 @@ public class LoginController extends ProductBaseController {
 					Dialog<String> dialog = new Dialog<String>();
 					dialog.setTitle("Login");
 					ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
-//					lblPassword.setTextFill(Color.RED);
 					dialog.setContentText("Incorrect Password");
 					dialog.getDialogPane().getButtonTypes().add(type);
 					dialog.showAndWait();
@@ -102,7 +93,6 @@ public class LoginController extends ProductBaseController {
 				errorUserLabel.setVisible(true);
 				Dialog<String> dialog = new Dialog<String>();
 				dialog.setTitle("Login");
-//				lblUsername.setTextFill(Color.RED);
 				ButtonType type = new ButtonType("OK", ButtonData.OK_DONE);
 				dialog.setContentText("Incorrect Username");
 				dialog.getDialogPane().getButtonTypes().add(type);
@@ -115,6 +105,7 @@ public class LoginController extends ProductBaseController {
 		}
 	}
 
+	// Go to the User Registration Page
 	@FXML
 	public void goToRegistration(ActionEvent event) {
 

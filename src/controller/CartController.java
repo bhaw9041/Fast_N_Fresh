@@ -1,8 +1,6 @@
 package controller;
 
 import java.net.URL;
-import java.sql.*;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -15,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.CartItem;
-import model.DatabaseConnector;
-import model.Product;
 
 public class CartController extends ProductBaseController implements Initializable {
 
@@ -41,26 +37,33 @@ public class CartController extends ProductBaseController implements Initializab
 	private TableColumn<CartItem, Integer> quantity;
 
 	@FXML
+	private Label orderLabel;
+
+	@FXML
 	private Label totalValue;
 
 	@FXML
 	void goToPayment(ActionEvent event) {
 		ScreenController.goToPaymentPage(event);
 	}
-	
-	@FXML
-    void goToCatalog(ActionEvent event) {
-		ScreenController.goToCatalogPage(event);
-    }
-	
-	@FXML
-    void goToLogin(ActionEvent event) {
-    	logOff();
-    	ScreenController.goToLoginPage(event);
-    }
 
+	@FXML
+	void goToCatalog(ActionEvent event) {
+		ScreenController.goToCatalogPage(event);
+	}
+
+	@FXML
+	void goToLogin(ActionEvent event) {
+		logOff();
+		ScreenController.goToLoginPage(event);
+	}
+
+	// Loads the product list information from the Cart object into
+	// ObservableArrayList
 	ObservableList<CartItem> list = FXCollections.observableArrayList(cart.getCartItems());
 
+	// Present the Order summary items in a user-friendly tabular format with
+	// Item total purchase value and the total cart value
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		productId.setCellValueFactory(new PropertyValueFactory<CartItem, String>("productId"));
@@ -73,6 +76,11 @@ public class CartController extends ProductBaseController implements Initializab
 			totalCartValue += (double) p.getQuantity() * p.getPrice();
 		}
 		totalValue.setText("Total Cart Value: $" + String.format("%.2f", totalCartValue));
+	}
+
+	@Override
+	public void initialize() {
+		orderLabel.setText("Please review your cart items");
 	}
 
 }

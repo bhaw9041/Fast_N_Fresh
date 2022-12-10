@@ -34,5 +34,6 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Label fx:id="orderLabel" layoutX="69.0" layoutY="142.0" prefHeight="17.0" prefWidth="204.0" text="Please review your cart order" />
    </children>
 </AnchorPane>
