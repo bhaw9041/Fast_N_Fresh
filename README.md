@@ -17,7 +17,7 @@ Name:Maheswara Sai Ram Palakurthy
 Email: palakurthy.m@northeastern.edu
 
 
-Steps to run the project
+# Steps to run the project
 
 1. Import the project into Eclipse.
 2. Download and install the MySQL server
