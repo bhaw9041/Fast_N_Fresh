@@ -13,7 +13,8 @@ public class CartItem {
 	private String itemTotalValue;
 	
 	DecimalFormat df = new DecimalFormat("0.00");
-    
+	
+    // CartItem entity holds the product information that is added to the cart by user
 	public CartItem(String productId, String name, int quantity, double price) {
         this.productId = productId;
         this.productName = name;

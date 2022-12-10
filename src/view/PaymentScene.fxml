@@ -42,9 +42,9 @@
       <TextField fx:id="cvvField" layoutX="210.0" layoutY="446.0" prefHeight="26.0" prefWidth="89.0" />
       <Label layoutX="24.0" layoutY="478.0" text="Name on card" />
       <TextField fx:id="nameField" layoutX="25.0" layoutY="495.0" prefHeight="26.0" prefWidth="151.0" />
-      <Button fx:id="confirmorder" layoutX="323.0" layoutY="542.0" mnemonicParsing="false" onAction="#handlebtnconfirmorder" prefHeight="35.0" prefWidth="151.0" text="Confirm Order">
+      <Button fx:id="confirmorder" layoutX="372.0" layoutY="549.0" mnemonicParsing="false" onAction="#handlebtnconfirmorder" prefHeight="29.0" prefWidth="130.0" text="Confirm Order">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
       </Button>
       <Button layoutX="753.0" layoutY="44.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="29.0" prefWidth="77.0" text="Logout" />

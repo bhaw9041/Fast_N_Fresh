@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class ScreenController {
-	
+	// Set the stage as per the traversal of the screens by the user
 	public static void showStage(ActionEvent event, String filename, String sceneName) {
         try {
             Parent parent = FXMLLoader.load(ScreenController.class.getResource(filename));

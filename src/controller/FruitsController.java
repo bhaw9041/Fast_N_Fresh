@@ -74,9 +74,10 @@ public class FruitsController extends ProductBaseController {
 	@FXML
 	Button watermelonButton;
 
+	@Override
 	public void initialize() {
 
-//    	 Database Connection code	
+//    	Fetch the Fruit Products information from the Fruits catalog in the Database
 		try {
 			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Fruits");
 			while (rs.next()) {
@@ -157,6 +158,7 @@ public class FruitsController extends ProductBaseController {
 		
 	}
 
+	// Add selected products to the cart list
 	@FXML
 	private void addToCart(javafx.event.ActionEvent event) {
 
@@ -233,24 +235,28 @@ public class FruitsController extends ProductBaseController {
 
 	}
 
+	// Traverse back to the Catalog Page
 	@FXML
 	private void backToCatalog(javafx.event.ActionEvent event) {
 
 		ScreenController.goToCatalogPage(event);
 	}
 
+	// Go to the Order Summary Page
 	@FXML
 	private void goToCart(javafx.event.ActionEvent event) {
 
 		ScreenController.goToCartPage(event);
 	}
 	
+	// Logout of the application and return to the Login Page
 	@FXML
     void goToLogin(ActionEvent event) {
     	logOff();
     	ScreenController.goToLoginPage(event);
     }
 	
+	// Disable the product item on the screen if it goes out of stock
 	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt){
 		errorLabel.setText("Out of Stock");
 		errorLabel.setTextFill(Color.RED);

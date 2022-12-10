@@ -73,17 +73,20 @@ public class PaymentSceneController extends ProductBaseController {
 	@FXML
 	private ToggleGroup payment;
 
+	// Logout of the application and return to the Login Page
 	@FXML
 	void goToLogin(ActionEvent event) {
 		logOff();
 		ScreenController.goToLoginPage(event);
 	}
 
+	// Go to the Order Summary Page
 	@FXML
 	void goToCart(ActionEvent event) {
 		ScreenController.goToCartPage(event);
 	}
 
+	// Disable Card fields upon COD selection
 	@FXML
 	void alterCardFields(ActionEvent event) {
 		codStatus = true;
@@ -93,6 +96,7 @@ public class PaymentSceneController extends ProductBaseController {
 		dateField.setDisable(codStatus);
 	}
 
+	// Enable Card fields upon Debit/Credit card selection
 	@FXML
 	void alterCOD(ActionEvent event) {
 		codStatus = false;
@@ -102,6 +106,7 @@ public class PaymentSceneController extends ProductBaseController {
 		dateField.setDisable(codStatus);
 	}
 
+	@Override
 	public void initialize() {
 		cardnumber.setDisable(codStatus);
 		cvvField.setDisable(codStatus);
@@ -111,11 +116,14 @@ public class PaymentSceneController extends ProductBaseController {
 
 	private String order_date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
 
+	// Validate and place order successfully
 	@FXML
 	public void handlebtnconfirmorder(ActionEvent event) {
 		if (isAddressValid()) {
 			errorAddress.setVisible(false);
 			addressField.setStyle(null);
+			// Proceed to Ordering if Cash On Delivery is selected
+			// Else do Credit card number validation
 			if (codStatus) {
 				proceedOrder(event);
 			} else {
@@ -158,6 +166,7 @@ public class PaymentSceneController extends ProductBaseController {
 
 	}
 
+	// Update the Database inventory and the user_order history and show successful message after placing order
 	private void proceedOrder(ActionEvent event) {
 		Dialog<String> dialog = new Dialog<String>();
 		updateCartItems();
@@ -173,6 +182,7 @@ public class PaymentSceneController extends ProductBaseController {
 		ScreenController.goToCatalogPage(event);
 	}
 
+	// Update the inventory items based on the amount of the product purchased by the user
 	private void updateCartItems() {
 		try {
 			List<CartItem> cartList = cart.getCartItems();
@@ -190,6 +200,7 @@ public class PaymentSceneController extends ProductBaseController {
 		}
 	}
 
+	// Update method that interacts with product_list table to set the new quantity available in the store after purchase
 	private void updateInventory(Connection conn, String key, int quantity) {
 		String query = "update product_list set productQuantity = ? where productId = ?";
 		PreparedStatement preparedStmt;
@@ -207,6 +218,7 @@ public class PaymentSceneController extends ProductBaseController {
 
 	}
 
+	// Update method that interacts with the user_order_history table to store user order information for Analytics purposes
 	private void saveOrderHistory(Connection conn, CartItem item, Product product) {
 		String query = "insert into user_order_history values (?,?,?,?,?)";
 		PreparedStatement orderStmt;
@@ -226,6 +238,7 @@ public class PaymentSceneController extends ProductBaseController {
 
 	}
 
+	// Validate the address field to not be empty
 	public boolean isAddressValid() {
 		String name = addressField.getText().trim();
 		if (name.length() > 0) {

@@ -91,5 +91,7 @@ insert into product_list values("VEG008", "Spinach", 3.55, 100, "Vegetables");
 insert into product_list values("VEG009", "Tomatoes", 4.74, 100, "Vegetables");
 
 5. Download and add the jar for the animation to the Build Path: https://mvnrepository.com/artifact/io.github.typhon0/AnimateFX/1.2.0 
-6. Add JavaFX library.
+6. Add JavaFX library to the Build Path.
+7. Update the url, username and password in the Fast_N_Fresh project under path src.constants.DatabaseUserConstants as per one's Database configuration.
 7. Run the Main.java file.
+8. Go to Register Page and register the user. Upon successful registration, login into your account and Voila!! Start your shopping on our platform Fast_N_Fresh.

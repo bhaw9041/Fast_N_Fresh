@@ -9,9 +9,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.paint.Color;
 import model.CartItem;
 import model.Product;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import model.DatabaseConnector;
 
 public class VegetablesController extends ProductBaseController {
@@ -75,7 +73,7 @@ public class VegetablesController extends ProductBaseController {
 
 	public void initialize() {
 
-//    	 Database Connection code	
+//    	Fetch the Vegetable Products information from the Vegetables catalog in the Database
 		try {
 			ResultSet rs = DatabaseConnector.getItemsFromCatalog("Vegetables");
 			while (rs.next()) {
@@ -154,6 +152,7 @@ public class VegetablesController extends ProductBaseController {
 
 	}
 
+	// Add selected products to the cart list
 	@FXML
 	private void addToCart(javafx.event.ActionEvent event) {
 
@@ -230,24 +229,26 @@ public class VegetablesController extends ProductBaseController {
 
 	}
 
+	// Traverse back to the Catalog Page
 	@FXML
 	private void backToCatalog(javafx.event.ActionEvent event) {
-
 		ScreenController.goToCatalogPage(event);
 	}
 
+	// Go to the Order Summary Page
 	@FXML
 	private void goToCart(javafx.event.ActionEvent event) {
-
 		ScreenController.goToCartPage(event);
 	}
 
+	// Logout of the application and return to the Login Page
 	@FXML
 	void goToLogin(ActionEvent event) {
 		logOff();
 		ScreenController.goToLoginPage(event);
 	}
 
+	// Disable the product item on the screen if it goes out of stock 
 	private void setOutOfStockField(Label errorLabel, Spinner spinner, Button bt) {
 		errorLabel.setText("Out of Stock");
 		errorLabel.setTextFill(Color.RED);

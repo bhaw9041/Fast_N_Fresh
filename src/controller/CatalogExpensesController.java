@@ -16,12 +16,13 @@ public class CatalogExpensesController extends ProductBaseController {
 	
 	@FXML PieChart catalogData;
 	
-	
+	// Go to the Catalog Page
 	@FXML
     void goToCatalog(ActionEvent event) {
 		ScreenController.goToCatalogPage(event);
     }
 	
+	@Override
 	public void initialize() {
 		
 		double fruitShare = 0;
@@ -30,7 +31,7 @@ public class CatalogExpensesController extends ProductBaseController {
 		double beverageShare = 0;
 		double dairyShare = 0;
 		double meatShare = 0;
-		
+		// Fetch the user order information from the Database and calculate the catalog wise expenditure and present it using Pie chart
 		try {
 			Connection conn = DatabaseConnector.getInstance();
 			Statement st = conn.createStatement();
