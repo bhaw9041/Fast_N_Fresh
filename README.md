@@ -94,4 +94,6 @@ insert into product_list values("VEG009", "Tomatoes", 4.74, 100, "Vegetables");
 6. Add JavaFX library to the Build Path.
 7. Update the url, username and password in the Fast_N_Fresh project under path src.constants.DatabaseUserConstants as per one's Database configuration.
 7. Run the Main.java file.
-8. Go to Register Page and register the user. Upon successful registration, login into your account and Voila!! Start your shopping on our platform Fast_N_Fresh.
+8. Go to Register Page and register the user. 
+9. Upon successful registration, login into your account.
+10. Voila!! Start your grocery shopping on our platform Fast_N_Fresh.
